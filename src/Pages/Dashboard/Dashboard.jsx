@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 
@@ -7,7 +7,10 @@ import auth from "../../Firebase-Setup/firebase.init";
 import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
-    const [user] = useAuthState(auth);
+    const [user, setUser] = useState(
+        JSON.parse(localStorage.getItem("employee"))
+    );
+
     const [admin] = useAdmin(user);
 
     return (

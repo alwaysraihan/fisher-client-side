@@ -4,9 +4,13 @@ import { XIcon, MenuIcon } from "@heroicons/react/solid";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const user = JSON.parse(localStorage.getItem("employee"));
+    const [user, setUser] = useState(
+        JSON.parse(localStorage.getItem("employee"))
+    );
+
     const handleSignOut = () => {
         localStorage.removeItem("employee");
+        setUser(null);
     };
 
     return (

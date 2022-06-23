@@ -50,7 +50,7 @@ const AdminLogin = () => {
                     if (data.email && data.password) {
                         localStorage.setItem("employee", JSON.stringify(data));
                         navigate("/");
-                        toast.success("লগিন সফল হয়েছে।");
+                        return toast.success("লগিন সফল হয়েছে।");
                     }
                     if (data.error) {
                         toast.error(data.error);

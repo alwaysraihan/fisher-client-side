@@ -9,8 +9,6 @@ import useToken from "../../../hooks/useToken";
 import LoadingData from "../../../Components/Loading/LoadingData";
 
 const EmployeeLogin = () => {
-    const [signInWithEmailAndPassword, user, loading, error] =
-        useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -48,9 +46,11 @@ const EmployeeLogin = () => {
                     if (data.email && data.password) {
                         localStorage.setItem("employee", JSON.stringify(data));
                         navigate("/");
-                        toast.success("Login Success");
+                        return toast.success("লগিন সফল হয়েছে।");
                     }
-                    if (!data.email || !data.password) {
+                    if (data.error) {
+                        toast.error(data.error);
+                    } else {
                         toast.error("Something Went worng! try again latter.");
                     }
                 });

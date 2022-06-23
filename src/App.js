@@ -65,7 +65,7 @@ function App() {
                                 index
                                 element={
                                     <RequireAuth>
-                                        <Home />
+                                        <AddEmployee />
                                     </RequireAuth>
                                 }
                             />
