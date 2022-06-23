@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { XIcon, MenuIcon } from "@heroicons/react/solid";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from "firebase/auth";
-import auth from "../../../Firebase-Setup/firebase.init";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [user] = useAuthState(auth);
+    const user = JSON.parse(localStorage.getItem("employee"));
     const handleSignOut = () => {
-        signOut(auth);
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem("employee");
     };
 
     return (

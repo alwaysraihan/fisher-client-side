@@ -15,6 +15,7 @@ import AdminLogin from "./Pages/Authentication/Login/AdminLogin";
 import EmployeeLogin from "./Pages/Authentication/Login/EmployeeLogin";
 
 import Blogs from "./Pages/Blogs/Blogs";
+import AddEmployee from "./Pages/Dashboard/AddEmployee/AddEmployee";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
 import Payment from "./Pages/Dashboard/Payment";
@@ -51,6 +52,7 @@ function App() {
                         <Route path="/portfolio" element={<Protfolio />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/purchase/:id" element={<Purchase />} />
+                        <Route path="/addemployee" element={<AddEmployee />} />
                         <Route
                             path="/dashboard"
                             element={
@@ -63,7 +65,7 @@ function App() {
                                 index
                                 element={
                                     <RequireAuth>
-                                        <MyProfile />
+                                        <Home />
                                     </RequireAuth>
                                 }
                             />

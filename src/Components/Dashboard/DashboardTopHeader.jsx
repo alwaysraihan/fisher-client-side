@@ -1,20 +1,20 @@
-import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { Link, NavLink } from "react-router-dom";
-import auth from "../../Firebase-Setup/firebase.init";
+
 import { XIcon, MenuIcon } from "@heroicons/react/solid";
 const DashboardTopHeader = () => {
-    const [user] = useAuthState(auth);
-
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [user, setUser] = useState(
+        JSON.parse(localStorage.getItem("employee"))
+    );
     const handleSignOut = () => {
-        signOut(auth);
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem("employee");
+        setUser(null);
     };
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <>

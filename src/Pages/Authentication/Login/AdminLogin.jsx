@@ -13,9 +13,6 @@ import useToken from "../../../hooks/useToken";
 import LoadingData from "../../../Components/Loading/LoadingData";
 
 const AdminLogin = () => {
-    const [signInWithEmailAndPassword, user, loading, error] =
-        useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -24,10 +21,7 @@ const AdminLogin = () => {
         email: "",
         password: "",
     });
-    const [signInWithGoogle, user1, loading1, error1] =
-        useSignInWithGoogle(auth);
 
-    const [token] = useToken(user || user1);
     let errorText;
     let name, value;
     const getUserData = (e) => {
@@ -39,38 +33,31 @@ const AdminLogin = () => {
 
     // condition
 
-    if (token) {
-        navigate(from, { replace: true });
-    }
-    if (loading || loading1) {
-        return (
-            <div className="my-5">
-                <LoadingData></LoadingData>
-            </div>
-        );
-    }
-    if (error || error1) {
-        errorText = (
-            <p className="text-red-600">
-                {error?.message} {error1?.message}
-            </p>
-        );
-    }
-
     const handleLoginFormSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = userLoginData;
-        await signInWithEmailAndPassword(email, password);
-    };
 
-    //   reste  password
-    const resetPassword = async () => {
-        const { email } = userLoginData;
-        if (email) {
-            await sendPasswordResetEmail(email);
-            toast("We sent a Reset email");
-        } else {
-            toast("please enter your email address");
+        if (email && password) {
+            fetch(`http://localhost:5000/admin-login`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(userLoginData),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.email && data.password) {
+                        localStorage.setItem("employee", JSON.stringify(data));
+                        navigate("/");
+                        toast.success("লগিন সফল হয়েছে।");
+                    }
+                    if (data.error) {
+                        toast.error(data.error);
+                    } else {
+                        toast.error("Something Went worng! try again latter.");
+                    }
+                });
         }
     };
     return (
@@ -89,7 +76,7 @@ const AdminLogin = () => {
                         </p>
                         <p className="flex flex-col items-center justify-center mt-10 text-center">
                             <span>Are you employee? Login here.</span>
-                            <Link to="/register" className="underline">
+                            <Link to="/employee-login" className="underline">
                                 Employee Login
                             </Link>
                         </p>

@@ -1,21 +1,71 @@
 import React from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
+//import Swiper core and required modules
+import { Navigation, Pagination, Autoplay } from "swiper";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import "./Banner.css";
 const Banner = () => {
     return (
         <>
-            <div className="hero">
-                <div className="content">
-                    <h1>Mobile Repairing Tools</h1>
-                    <p className="search-text">
-                        {" "}
-                        Best Mobile Tools Manufacturers All Over The World.
-                        Every Product Made With Best Quality.{" "}
-                    </p>
-                </div>
-            </div>
+            <Swiper
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={30}
+                slidesPerView={1}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 3500,
+                    disableOnInteraction: false,
+                }}
+                navigation={true}
+                pagination={{
+                    dynamicBullets: true,
+                }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log("slide change")}
+                className="mySwiper"
+            >
+                <SwiperSlide>
+                    <div className="w-full">
+                        <div className="w-full">
+                            <img
+                                className="w-full max-h-[70vh]"
+                                src="https://source.unsplash.com/1280x720/?nature"
+                                alt=" Slider"
+                            />
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="w-full">
+                        <div className="w-full">
+                            <img
+                                className="w-full max-h-[70vh]"
+                                src="https://source.unsplash.com/1280x720/?nature"
+                                alt=" Slider"
+                            />
+                        </div>
+                    </div>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <div className="w-full">
+                        <div className="w-full">
+                            <img
+                                className="w-full max-h-[70vh]"
+                                src="https://source.unsplash.com/1280x720/?nature"
+                                alt=" Slider"
+                            />
+                        </div>
+                    </div>
+                </SwiperSlide>
+            </Swiper>
         </>
     );
 };
