@@ -12,7 +12,7 @@ import auth from "../../../Firebase-Setup/firebase.init";
 import useToken from "../../../hooks/useToken";
 import LoadingData from "../../../Components/Loading/LoadingData";
 
-const Login = () => {
+const EmployeeLogin = () => {
     const [signInWithEmailAndPassword, user, loading, error] =
         useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
@@ -234,4 +234,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default EmployeeLogin;

@@ -11,8 +11,9 @@ import MyProfile from "./Components/Dashboard/MyProfile";
 import MainLoading from "./Components/Loading/MainLoading";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import auth from "./Firebase-Setup/firebase.init";
-import Login from "./Pages/Authentication/Login/Login";
-import Register from "./Pages/Authentication/Register/Register";
+import AdminLogin from "./Pages/Authentication/Login/AdminLogin";
+import EmployeeLogin from "./Pages/Authentication/Login/EmployeeLogin";
+
 import Blogs from "./Pages/Blogs/Blogs";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
@@ -42,8 +43,11 @@ function App() {
                 ) : (
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route
+                            path="/employee-login"
+                            element={<EmployeeLogin />}
+                        />
+                        <Route path="/admin-login" element={<AdminLogin />} />
                         <Route path="/portfolio" element={<Protfolio />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/purchase/:id" element={<Purchase />} />

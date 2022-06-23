@@ -146,7 +146,7 @@ const Header = () => {
                         ) : (
                             <div className="font-semibold">
                                 <NavLink
-                                    to="/login"
+                                    to="/admin-login"
                                     className={({ isActive }) =>
                                         isActive
                                             ? "p-2 lg:px-4 md:mx-2 text-white bg-teal-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-teal-600 transition-colors duration-300"
@@ -156,7 +156,7 @@ const Header = () => {
                                     Admin Login
                                 </NavLink>
                                 <NavLink
-                                    to="/register"
+                                    to="/employee-login"
                                     className={({ isActive }) =>
                                         isActive
                                             ? "p-2 lg:px-4 md:mx-2  text-center border border-solid border-teal-600 rounded  transition-colors duration-300 mt-1 md:mt-0 md:ml-1 bg-teal-600 text-white"
