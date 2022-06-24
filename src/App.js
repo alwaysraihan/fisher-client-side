@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import AddProduct from "./Components/Dashboard/AddProduct";
 import AddReview from "./Components/Dashboard/AddReview";
 import MakeAdmin from "./Components/Dashboard/MakeAdmin";
+import MangeAteendance from "./Components/Dashboard/MangeAteendance";
 import MangeProduct from "./Components/Dashboard/MangeProduct";
 import ManggeOrders from "./Components/Dashboard/ManggeOrders";
 import MyOrders from "./Components/Dashboard/MyOrders";
@@ -18,6 +19,7 @@ import EmployeeLogin from "./Pages/Authentication/Login/EmployeeLogin";
 
 import AddEmployee from "./Pages/Dashboard/AddEmployee/AddEmployee";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MangeEmployee from "./Pages/Dashboard/MangeEmployee/MangeEmployee";
 
 import Payment from "./Pages/Dashboard/Payment";
 import FAQ from "./Pages/FAQ/FAQ";
@@ -104,15 +106,15 @@ function App() {
                             }
                         />
                         <Route
-                            path="manageOrders"
+                            path="manageAttendences"
                             element={
                                 <RequireAuth>
-                                    <ManggeOrders />
+                                    <MangeAteendance />
                                 </RequireAuth>
                             }
                         />
                         <Route
-                            path="addEmpoyee"
+                            path="addEmployee"
                             element={
                                 <RequireAuth>
                                     <AddEmployee />
@@ -128,10 +130,10 @@ function App() {
                             }
                         />
                         <Route
-                            path="manageProducts"
+                            path="manageEmployee"
                             element={
                                 <RequireAuth>
-                                    <MangeProduct />
+                                    <MangeEmployee />
                                 </RequireAuth>
                             }
                         />

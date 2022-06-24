@@ -76,30 +76,23 @@ const Dashboard = ({ user, setUser, setreload }) => {
                             </li>
                         )}
 
-                        {/* {admin && (
-                            <li>
-                                <Link to="/dashboard/addReview">
-                                    Add a Review
-                                </Link>
-                            </li>
-                        )} */}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/addEmpoyee">
+                                <Link to="/dashboard/addEmployee">
                                     Add Employee
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/manageOrders">
+                                <Link to="/dashboard/manageEmployee">
                                     Manage Employee
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/manageOrders">
+                                <Link to="/dashboard/manageAttendences">
                                     Manage Attandances
                                 </Link>
                             </li>
@@ -107,28 +100,28 @@ const Dashboard = ({ user, setUser, setreload }) => {
 
                         {admin && (
                             <li>
-                                <Link to="/dashboard/manageOrders">
+                                <Link to="/dashboard/manageAttendences">
                                     Employee Tasks
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/manageOrders">
+                                <Link to="/dashboard/manageAttendences">
                                     Manipulatate Task
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/manageOrders">
+                                <Link to="/dashboard/manageAttendences">
                                     Task Distrubution
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/manageOrders">
+                                <Link to="/dashboard/manageAttendences">
                                     Purchase Management
                                 </Link>
                             </li>
@@ -152,6 +145,13 @@ const Dashboard = ({ user, setUser, setreload }) => {
                             <li>
                                 <Link to="/dashboard/manageProducts">
                                     Attendance Reports
+                                </Link>
+                            </li>
+                        )}
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/addReview">
+                                    Add a Review
                                 </Link>
                             </li>
                         )}

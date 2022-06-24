@@ -4,15 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../Firebase-Setup/firebase.init";
 
-const OrderDeleteModal = ({ setOrderData, orderData }) => {
+const DeleteModal = ({ url, setModalData, modalData, setreload }) => {
     const handleSignOut = () => {
         signOut(auth);
         localStorage.removeItem("accessToken");
     };
     const navigate = useNavigate();
     const handleDeletOrder = async (id) => {
-        const url = `https://elctrofy.herokuapp.com/order/${id}`;
-
         fetch(url, {
             method: "DELETE",
             headers: {
@@ -28,11 +26,12 @@ const OrderDeleteModal = ({ setOrderData, orderData }) => {
             })
             .then((data) => {
                 if (data.deletedCount > 0) {
-                    toast.success("Your order is Deleted.");
-                    setOrderData(null);
+                    toast.success("successfully Deleted.");
+                    setModalData(null);
+                    return setreload(true);
                 } else {
                     toast.error("Try Again. Something Went Wrong!");
-                    setOrderData(null);
+                    setModalData(null);
                 }
             });
     };
@@ -41,25 +40,19 @@ const OrderDeleteModal = ({ setOrderData, orderData }) => {
             <input type="checkbox" id="order-delete" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <h1 className=" text-xs md:text-sm font-semibold text-gray-600 ">
-                        Product Name:{" "}
-                        <span className="font-bold">
-                            {orderData?.productName}
-                        </span>
-                    </h1>
-                    <h1 className="text-sm md:text-xl font-bold">
-                        Are you sure? You want to Delete the Order ?
+                    <h1 className="mt-5 text-sm md:text-xl font-bold">
+                        Are you sure? You want to Delete?
                     </h1>
 
                     <div className="flex gap-5 justify-end mt-5">
                         <button
-                            onClick={() => setOrderData(null)}
+                            onClick={() => setModalData(null)}
                             className="btn btn-accent text-white"
                         >
                             Cancel
                         </button>
                         <button
-                            onClick={() => handleDeletOrder(orderData._id)}
+                            onClick={() => handleDeletOrder(modalData._id)}
                             className="btn btn-warning bg-red-500 text-white"
                         >
                             Delete
@@ -71,4 +64,4 @@ const OrderDeleteModal = ({ setOrderData, orderData }) => {
     );
 };
 
-export default OrderDeleteModal;
+export default DeleteModal;

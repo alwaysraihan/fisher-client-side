@@ -7,7 +7,7 @@ import axiosSecret from "../../axiosSecret/axiosSecret";
 import auth from "../../Firebase-Setup/firebase.init";
 import { signOut } from "firebase/auth";
 
-import OrderDeleteModal from "./OrderDeleteModal";
+import DeleteModal from "./DeleteModal";
 import LoadingBig from "../Loading/LoadignBig";
 
 const MyOrders = () => {
@@ -139,7 +139,7 @@ const MyOrders = () => {
                 </table>
             </div>
             {orderData && (
-                <OrderDeleteModal
+                <DeleteModal
                     setOrderData={setOrderData}
                     orderData={orderData}
                 />
