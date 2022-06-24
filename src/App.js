@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -8,26 +9,32 @@ import MangeProduct from "./Components/Dashboard/MangeProduct";
 import ManggeOrders from "./Components/Dashboard/ManggeOrders";
 import MyOrders from "./Components/Dashboard/MyOrders";
 import MyProfile from "./Components/Dashboard/MyProfile";
-import MainLoading from "./Components/Loading/MainLoading";
+
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
-import auth from "./Firebase-Setup/firebase.init";
+
+import About from "./Pages/About/About";
 import AdminLogin from "./Pages/Authentication/Login/AdminLogin";
 import EmployeeLogin from "./Pages/Authentication/Login/EmployeeLogin";
 
-import Blogs from "./Pages/Blogs/Blogs";
 import AddEmployee from "./Pages/Dashboard/AddEmployee/AddEmployee";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
 import Payment from "./Pages/Dashboard/Payment";
+import FAQ from "./Pages/FAQ/FAQ";
 import Home from "./Pages/HomePage/Home/Home";
 import Purchase from "./Pages/MyCart/Purchase";
-import Protfolio from "./Pages/Protfolio/Protfolio";
+
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
 import PageNotFound from "./Pages/SharedPages/PageNotFound/PageNotFound";
 
 function App() {
-    const [user, loading] = useAuthState(auth);
+    const [user, setUser] = useState(null);
+
+    const [reload, setreload] = useState(false);
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem("employee")));
+    }, [reload]);
     const { pathname } = useLocation();
     return (
         <>
@@ -35,101 +42,103 @@ function App() {
                 <div
                     className={`${pathname.includes("/dashboard") && "hidden"}`}
                 >
-                    <Header />
+                    <Header user={user} setUser={setUser} />
                 </div>
-                {loading ? (
-                    <div>
-                        <MainLoading />
-                    </div>
-                ) : (
-                    <Routes>
-                        <Route path="/" element={<Home />} />
+
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/employee-login"
+                        element={<EmployeeLogin setreload={setreload} />}
+                    />
+                    <Route
+                        path="/admin-login"
+                        element={<AdminLogin setreload={setreload} />}
+                    />
+                    <Route path="/faqs" element={<FAQ />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/purchase/:id" element={<Purchase />} />
+                    <Route path="/addemployee" element={<AddEmployee />} />
+                    <Route
+                        path="/dashboard"
+                        element={
+                            <RequireAuth>
+                                <Dashboard
+                                    user={user}
+                                    setUser={setUser}
+                                    setreload={setreload}
+                                />
+                            </RequireAuth>
+                        }
+                    >
                         <Route
-                            path="/employee-login"
-                            element={<EmployeeLogin />}
-                        />
-                        <Route path="/admin-login" element={<AdminLogin />} />
-                        <Route path="/portfolio" element={<Protfolio />} />
-                        <Route path="/blogs" element={<Blogs />} />
-                        <Route path="/purchase/:id" element={<Purchase />} />
-                        <Route path="/addemployee" element={<AddEmployee />} />
-                        <Route
-                            path="/dashboard"
+                            index
                             element={
                                 <RequireAuth>
-                                    <Dashboard />
+                                    <MyProfile />
                                 </RequireAuth>
                             }
-                        >
-                            <Route
-                                index
-                                element={
-                                    <RequireAuth>
-                                        <AddEmployee />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="myOrders"
-                                element={
-                                    <RequireAuth>
-                                        <MyOrders />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="addReview"
-                                element={
-                                    <RequireAuth>
-                                        <AddReview />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="payment/:orderid"
-                                element={
-                                    <RequireAuth>
-                                        <Payment />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="manageOrders"
-                                element={
-                                    <RequireAuth>
-                                        <ManggeOrders />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="addProduct"
-                                element={
-                                    <RequireAuth>
-                                        <AddProduct />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="makeAdmin"
-                                element={
-                                    <RequireAuth>
-                                        <MakeAdmin />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route
-                                path="manageProducts"
-                                element={
-                                    <RequireAuth>
-                                        <MangeProduct />
-                                    </RequireAuth>
-                                }
-                            />
-                            <Route path="*" element={<PageNotFound />} />
-                        </Route>
+                        />
+                        <Route
+                            path="myOrders"
+                            element={
+                                <RequireAuth>
+                                    <MyOrders />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="addReview"
+                            element={
+                                <RequireAuth>
+                                    <AddReview />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="payment/:orderid"
+                            element={
+                                <RequireAuth>
+                                    <Payment />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="manageOrders"
+                            element={
+                                <RequireAuth>
+                                    <ManggeOrders />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="addEmpoyee"
+                            element={
+                                <RequireAuth>
+                                    <AddEmployee />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="makeAdmin"
+                            element={
+                                <RequireAuth>
+                                    <MakeAdmin />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="manageProducts"
+                            element={
+                                <RequireAuth>
+                                    <MangeProduct />
+                                </RequireAuth>
+                            }
+                        />
                         <Route path="*" element={<PageNotFound />} />
-                    </Routes>
-                )}
+                    </Route>
+                    <Route path="*" element={<PageNotFound />} />
+                </Routes>
             </div>
             <ToastContainer />
             <div

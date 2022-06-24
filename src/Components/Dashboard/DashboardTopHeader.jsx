@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
 
 const DashboardTopHeader = () => {
     const [user, setUser] = useState(
@@ -10,7 +11,7 @@ const DashboardTopHeader = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
+    const [admin] = useAdmin(user);
     return (
         <>
             <div className=" py-2 md:py-4 bg-gray-800 shadow-xl text-white z-10">
@@ -42,11 +43,7 @@ const DashboardTopHeader = () => {
                             to="/"
                             className="font-bold uppercase text-blue-500 text-xl "
                         >
-                            {
-                                (user.role = "admin"
-                                    ? "Admin Pannel"
-                                    : "Employee Dashobard")
-                            }
+                            {admin ? "Admin Pannel" : "Employee Dashobard"}
                         </Link>
                     </div>
                 </div>

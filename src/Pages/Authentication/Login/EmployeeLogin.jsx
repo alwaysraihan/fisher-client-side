@@ -8,7 +8,7 @@ import auth from "../../../Firebase-Setup/firebase.init";
 import useToken from "../../../hooks/useToken";
 import LoadingData from "../../../Components/Loading/LoadingData";
 
-const EmployeeLogin = () => {
+const EmployeeLogin = ({ setreload }) => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -45,6 +45,7 @@ const EmployeeLogin = () => {
                 .then((data) => {
                     if (data.email && data.password) {
                         localStorage.setItem("employee", JSON.stringify(data));
+                        setreload(true);
                         navigate("/");
                         return toast.success("লগিন সফল হয়েছে।");
                     }

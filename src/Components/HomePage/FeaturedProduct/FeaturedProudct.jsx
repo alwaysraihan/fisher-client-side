@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
         <>
             <div className="pb-20">
                 <h1 className="text-center text-gray-600 text-2xl md:text-5xl font-semibold py-10 md:pt-20 ">
-                    Inventory Item's
+                    Featured Feed
                 </h1>
                 {inventoryItemes.length === 0 ? (
                     <div className=" w-full my-10 z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
@@ -41,19 +41,20 @@ const FeaturedProducts = () => {
                     {inventoryItemes.map((item) => (
                         <div key={item._id} className="w-full p-2 ">
                             <div className="bg-white shadow-lg hover:shadow-xl rounded-lg relative">
-                                <div
-                                    className="bg-gray-400 h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover"
-                                    style={{
-                                        backgroundImage: `url(${item.img})`,
-                                    }}
-                                ></div>
+                                <div className="bg-white flex justify-center h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover">
+                                    <img
+                                        className="h-full"
+                                        src="https://images.othoba.com/images/thumbs/0284635_aalo-pangush-finisher-floating-fish-feed-20-kg.jpeg"
+                                        alt="feed"
+                                    />
+                                </div>
                                 <div className="flex justify-between items-start px-2 pt-2">
                                     <div className="p-2 flex-grow">
                                         <h1 className="font-medium text-xl font-poppins">
                                             {item.name}
                                         </h1>
                                         <p className="text-gray-500 font-nunito">
-                                            {item.description.slice(0, 50) +
+                                            {item.description.slice(0, 40) +
                                                 "..."}
                                         </p>
                                     </div>
@@ -109,26 +110,13 @@ const FeaturedProducts = () => {
                                     </div>
                                 </div>
                                 <div className="ribbon ribbon-top-right">
-                                    <span>
-                                        {parseInt(item.quantity) === 0
-                                            ? "Stock Out"
-                                            : "In Stock"}
-                                    </span>
+                                    <span>Top Rated</span>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="mt-3 md:mt-8  flex justify-center">
-                    <div className="rounded-md shadow">
-                        <Link
-                            to="/dashboard/manage-inventory"
-                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:px-10"
-                        >
-                            Manage Inventory
-                        </Link>
-                    </div>
-                </div>
+                <div className="mt-3 md:mt-8  flex justify-center"></div>
             </div>
         </>
     );

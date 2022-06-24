@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import DashboardTopHeader from "../../Components/Dashboard/DashboardTopHeader";
-import auth from "../../Firebase-Setup/firebase.init";
+
 import useAdmin from "../../hooks/useAdmin";
 
-const Dashboard = () => {
-    const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("employee"))
-    );
-
+const Dashboard = ({ user, setUser, setreload }) => {
     const [admin] = useAdmin(user);
+    console.log(admin);
+
+    const handleSignOut = () => {
+        localStorage.removeItem("employee");
+        setUser(null);
+        setreload(true);
+    };
 
     return (
         <>
@@ -38,42 +41,126 @@ const Dashboard = () => {
                         </li>
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/myOrders">My Orders</Link>
+                                <Link to="/dashboard/myOrders">
+                                    Assigned Tasks
+                                </Link>
                             </li>
                         )}
                         {!admin && (
                             <li>
+                                <Link to="/dashboard/myOrders">
+                                    Update Task Status
+                                </Link>
+                            </li>
+                        )}
+                        {!admin && (
+                            <li>
+                                <Link to="/dashboard/myOrders">
+                                    Completed Task List
+                                </Link>
+                            </li>
+                        )}
+                        {!admin && (
+                            <li>
+                                <Link to="/dashboard/myOrders">
+                                    Incompleted Task List
+                                </Link>
+                            </li>
+                        )}
+
+                        {!admin && (
+                            <li>
+                                <Link to="/dashboard/myOrders">
+                                    Task Forwarding
+                                </Link>
+                            </li>
+                        )}
+
+                        {/* {admin && (
+                            <li>
                                 <Link to="/dashboard/addReview">
                                     Add a Review
+                                </Link>
+                            </li>
+                        )} */}
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/addEmpoyee">
+                                    Add Employee
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
                                 <Link to="/dashboard/manageOrders">
-                                    Manage Orders
+                                    Manage Employee
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/addProduct">
-                                    Add A Product
+                                <Link to="/dashboard/manageOrders">
+                                    Manage Attandances
+                                </Link>
+                            </li>
+                        )}
+
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/manageOrders">
+                                    Employee Tasks
                                 </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
-                                <Link to="/dashboard/makeAdmin">All Users</Link>
+                                <Link to="/dashboard/manageOrders">
+                                    Manipulatate Task
+                                </Link>
+                            </li>
+                        )}
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/manageOrders">
+                                    Task Distrubution
+                                </Link>
+                            </li>
+                        )}
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/manageOrders">
+                                    Purchase Management
+                                </Link>
+                            </li>
+                        )}
+
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/makeAdmin">
+                                    Selling Fish
+                                </Link>
                             </li>
                         )}
                         {admin && (
                             <li>
                                 <Link to="/dashboard/manageProducts">
-                                    Manage Products
+                                    Selling Fish Reports
                                 </Link>
                             </li>
                         )}
+                        {admin && (
+                            <li>
+                                <Link to="/dashboard/manageProducts">
+                                    Attendance Reports
+                                </Link>
+                            </li>
+                        )}
+                        <li
+                            onClick={handleSignOut}
+                            className="mt-10 cursor-pointer text-center text-warning"
+                        >
+                            Logout
+                        </li>
                     </ul>
                 </div>
             </div>

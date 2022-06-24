@@ -11,11 +11,11 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <div className="bg-gray-100">
+            <div className="bg-slate-100">
                 <FeaturedProducts />
-                <Employe />
+                {/* <Employe /> */}
                 <BusinessSummary />
-                <Blog />
+                {/* <Blog /> */}
                 <Review />
             </div>
         </>

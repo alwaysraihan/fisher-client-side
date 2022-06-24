@@ -34,12 +34,7 @@ const AddEmployee = () => {
                     )}`,
                 },
             })
-            .then((res) => {
-                res.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
+            .then((res) => {});
 
         toast.success("New Employee Successfully added", {
             toastId: "addEmployee",

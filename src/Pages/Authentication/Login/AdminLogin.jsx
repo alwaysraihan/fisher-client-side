@@ -11,12 +11,12 @@ import { toast } from "react-toastify";
 import auth from "../../../Firebase-Setup/firebase.init";
 import useToken from "../../../hooks/useToken";
 import LoadingData from "../../../Components/Loading/LoadingData";
+import { reload } from "firebase/auth";
 
-const AdminLogin = () => {
+const AdminLogin = ({ setreload }) => {
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
     const [userLoginData, setUserLoginData] = useState({
         email: "",
         password: "",
@@ -49,6 +49,7 @@ const AdminLogin = () => {
                 .then((data) => {
                     if (data.email && data.password) {
                         localStorage.setItem("employee", JSON.stringify(data));
+                        setreload(true);
                         navigate("/");
                         return toast.success("লগিন সফল হয়েছে।");
                     }

@@ -1,32 +1,6 @@
-import React, { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
 import { toast } from "react-toastify";
-import auth from "../../Firebase-Setup/firebase.init";
-import LoadingData from "../Loading/LoadingData";
-import EditMyProfile from "./EditMyProfile";
 
-const MyProfile = () => {
-    const [user] = useAuthState(auth);
-    const [edit, setEdit] = useState(null);
-    const { data, isLoading, refetch } = useQuery("users", () =>
-        fetch(`https://elctrofy.herokuapp.com/my-profile?email=${user.email}`, {
-            method: "GET",
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-        }).then((res) => res.json())
-    );
-
-    if (isLoading) {
-        return (
-            <div className=" mt-10">
-                <LoadingData />;
-            </div>
-        );
-    }
-    const ProfileData = data[0];
-    console.log(ProfileData);
+const MyProfile = ({ user }) => {
     return (
         <>
             <div className="container mx-auto my-5 p-5">
@@ -38,23 +12,15 @@ const MyProfile = () => {
                         <div className="bg-white p-3 border-t-4 border-green-400">
                             <div className="flex items-center justify-center">
                                 <div className="image w-full overflow-hidden">
-                                    {user.photoURL ? (
-                                        <img
-                                            className="h-auto w-full"
-                                            src={user.photoURL}
-                                            alt="profile"
-                                        />
-                                    ) : (
-                                        <img
-                                            className="h-auto w-full mx-auto"
-                                            src="https://i.ibb.co/KDfw63R/Pngtree-business-male-icon-vector-4187852.png"
-                                            alt="profile"
-                                        />
-                                    )}
+                                    <img
+                                        className="h-auto w-full mx-auto"
+                                        src="https://i.ibb.co/KDfw63R/Pngtree-business-male-icon-vector-4187852.png"
+                                        alt="profile"
+                                    />
                                 </div>
                             </div>
                             <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                                {user?.displayName}
+                                {user?.employeeName ? user.employeeName : ""}
                             </h1>
 
                             <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
@@ -107,7 +73,7 @@ const MyProfile = () => {
                                             Name
                                         </div>
                                         <div className="px-4 py-2">
-                                            {user.displayName}
+                                            <h1>Raihan</h1>
                                         </div>
                                     </div>
 
@@ -115,31 +81,20 @@ const MyProfile = () => {
                                         <div className="px-4 py-2 font-semibold">
                                             Contact No.
                                         </div>
-                                        {ProfileData?.phone && (
-                                            <div className="px-4 py-2">
-                                                {ProfileData.phone}
-                                            </div>
-                                        )}
+                                        <h1>01402348575</h1>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
                                             Address
                                         </div>
-                                        {ProfileData.address && (
-                                            <div className="px-4 py-2">
-                                                {ProfileData.address}
-                                            </div>
-                                        )}
+                                        <h1>Dhaka,Bangladesh</h1>
                                     </div>
                                     <div className="grid grid-cols-2">
-                                        {ProfileData.linkedin ? (
+                                        {user ? (
                                             <div className="px-4 py-2 font-semibold">
-                                                <a
-                                                    className="text-blue-500"
-                                                    href={`${ProfileData.linkedin}`}
-                                                >
+                                                <span className="text-blue-500">
                                                     Linkedin
-                                                </a>
+                                                </span>
                                             </div>
                                         ) : (
                                             <div
@@ -159,12 +114,9 @@ const MyProfile = () => {
                                             Email
                                         </div>
                                         <div className="px-4 py-2">
-                                            <a
-                                                className="text-blue-800"
-                                                href={`mailto:${user.email}`}
-                                            >
-                                                {user.email}
-                                            </a>
+                                            <span className="text-blue-800">
+                                                employee@gmail.com
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-2">
@@ -172,36 +124,11 @@ const MyProfile = () => {
                                             Education
                                         </div>
                                         <div className="px-4 py-2">
-                                            {ProfileData?.education && (
-                                                <a
-                                                    className="text-blue-800"
-                                                    href={`mailto:${user.email}`}
-                                                >
-                                                    {ProfileData.education}
-                                                </a>
-                                            )}
+                                            <h1>Education</h1>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex justify-end">
-                                <button
-                                    onClick={() => setEdit({ edit: true })}
-                                    className="block   bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
-                                >
-                                    Edit
-                                </button>
-                            </div>
-                        </div>
-                        {/* <!-- End of about section --> */}
-
-                        <div className="my-4">
-                            {edit && (
-                                <EditMyProfile
-                                    refetch={refetch}
-                                    setEdit={setEdit}
-                                />
-                            )}
                         </div>
                     </div>
                 </div>

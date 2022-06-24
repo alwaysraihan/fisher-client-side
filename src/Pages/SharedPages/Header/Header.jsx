@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { XIcon, MenuIcon } from "@heroicons/react/solid";
+import { reload } from "firebase/auth";
 
-const Header = () => {
+const Header = ({ user, setUser, reload }) => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [user, setUser] = useState(
-        JSON.parse(localStorage.getItem("employee"))
-    );
 
     const handleSignOut = () => {
         localStorage.removeItem("employee");
@@ -103,9 +101,9 @@ const Header = () => {
                                         <div>
                                             <div className="flex flex-col p-4 space-y-1 font-medium border-b">
                                                 <span className="text-gray-800">
-                                                    {user.displayName
-                                                        ? user.displayName
-                                                        : "User"}
+                                                    {user.employeeName
+                                                        ? user.employeeName
+                                                        : "My Profile"}
                                                 </span>
                                                 <span className="text-sm text-gray-400">
                                                     {user.email
