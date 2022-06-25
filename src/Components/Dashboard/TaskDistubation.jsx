@@ -241,7 +241,7 @@ const TaskDistubation = () => {
 
             {modalData && (
                 <AssignNewTaskModal
-                    url={`http://localhost:5000/employee/${modalData._id}`}
+                    url={`http://localhost:5000/task`}
                     setModalData={setModalData}
                     modalData={modalData}
                     setreload={setreload}

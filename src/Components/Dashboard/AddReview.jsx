@@ -1,9 +1,8 @@
 import axios from "axios";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const AddReview = ({ user }) => {
+const AddReview = () => {
     const {
         register,
         handleSubmit,
@@ -14,35 +13,23 @@ const AddReview = ({ user }) => {
 
     const onFormSubmit = async (data) => {
         const rivew = {
-            email: user.email,
+            name: data.name,
             rivew: data.rivew,
             rate: data.rate,
-            // user info whe is adding rivew
-            addedAdmin: data.adminName,
-            adminEmail: data.adminEmail,
         };
 
-        axios
-            .post("https://elctrofy.herokuapp.com/rivews", rivew, {
-                headers: {
-                    "content-type": "application/json",
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            })
-            .then((res) => {
-                const data = res.data;
-                if (data.success) {
-                    toast.success("Thanks for Your Rivew", {
-                        toastId: "addRivew",
-                    });
-                } else {
-                    toast.error("Failed to add you rivew!", {
-                        toastId: "faildToRivew",
-                    });
-                }
-            });
+        axios.post("http://localhost:5000/rivews", rivew).then((res) => {
+            const data = res.data;
+            if (data.success) {
+                toast.success("New Rivew Added", {
+                    toastId: "addRivew",
+                });
+            } else {
+                toast.error("Failed to add this rivew!", {
+                    toastId: "faildToRivew",
+                });
+            }
+        });
 
         reset();
     };
@@ -54,7 +41,7 @@ const AddReview = ({ user }) => {
                     <section className="bg-slate-100 p-4 shadow">
                         <div className="md:flex">
                             <h2 className="md:w-1/3 uppercase tracking-wide text-sm sm:text-lg mb-6">
-                                Give us a rivew
+                                Add A New Rivew
                             </h2>
                         </div>
                         <form
@@ -64,7 +51,26 @@ const AddReview = ({ user }) => {
                             <div className="mb-8">
                                 <div className="md:flex-1 mt-2 mb:mt-0 ">
                                     <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                                        Your Rivew
+                                        Who gave the review
+                                    </label>
+                                    <input
+                                        className="w-full shadow-inner p-4 border-0"
+                                        placeholder="Enter the name"
+                                        name="name"
+                                        {...register("name", {
+                                            required: true,
+                                        })}
+                                    ></input>
+                                    {errors.name && (
+                                        <span className="text-red-500">
+                                            Minimum 10 chracter Rivew is
+                                            required
+                                        </span>
+                                    )}
+                                </div>
+                                <div className="md:flex-1 mt-2 mb:mt-0 ">
+                                    <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
+                                        New Rivew
                                     </label>
                                     <textarea
                                         className="w-full shadow-inner p-4 border-0"
@@ -87,7 +93,7 @@ const AddReview = ({ user }) => {
                                     <div className="md:flex w-full mb-4">
                                         <div className="md:flex-1 md:pr-3 mb-4 md:mb-0">
                                             <label className="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">
-                                                Your Rating
+                                                Rivew Rating
                                             </label>
 
                                             <select

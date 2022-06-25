@@ -1,9 +1,10 @@
 import React from "react";
+import EmployeeTasks from "./EmployeeTasks/EmployeeTasks";
 
 const EmployeeTask = () => {
     return (
         <div>
-            <h1>mployeeTask</h1>
+            <EmployeeTasks />
         </div>
     );
 };

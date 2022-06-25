@@ -5,7 +5,7 @@ const DatePicker = ({ date, setDate }) => {
     return (
         <>
             <h1 className="text-center mt-8 mb-10 text-xl md:text-2xl font-semibold">
-                Select A Attendence Date
+                Select A Date You Want To See
             </h1>
             <div className="hero">
                 <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">

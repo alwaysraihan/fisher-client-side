@@ -40,28 +40,28 @@ const Dashboard = ({ user, setUser, setreload }) => {
                         </li>
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/myOrders">
+                                <Link to="/dashboard/assignd-tasks">
                                     Assigned Tasks
                                 </Link>
                             </li>
                         )}
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/myOrders">
+                                <Link to="/dashboard/update-task-status">
                                     Update Task Status
                                 </Link>
                             </li>
                         )}
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/myOrders">
+                                <Link to="/dashboard/completed-task-list">
                                     Completed Task List
                                 </Link>
                             </li>
                         )}
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/myOrders">
+                                <Link to="/dashboard/completed-task-list">
                                     Incompleted Task List
                                 </Link>
                             </li>
@@ -69,7 +69,7 @@ const Dashboard = ({ user, setUser, setreload }) => {
 
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/myOrders">
+                                <Link to="/dashboard/task-forwarding">
                                     Task Forwarding
                                 </Link>
                             </li>

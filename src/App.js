@@ -5,10 +5,16 @@ import { ToastContainer } from "react-toastify";
 import AddReview from "./Components/Dashboard/AddReview";
 
 import AttendanceReports from "./Components/Dashboard/AttendanceReports/AttendanceReports";
+import AssignedTasks from "./Components/Dashboard/EmployeeRoute/AssignedTasks";
+import CompletedTaskList from "./Components/Dashboard/EmployeeRoute/CompletedTaskList";
+import IncompletedTaskList from "./Components/Dashboard/EmployeeRoute/IncompletedTaskList";
+import TaskForwarding from "./Components/Dashboard/EmployeeRoute/TaskForwarding";
+import UpdateTaskStatus from "./Components/Dashboard/EmployeeRoute/UpdateTaskStatus";
 import EmployeeTask from "./Components/Dashboard/EmployeeTask";
 import MangeAteendance from "./Components/Dashboard/MangeAteendance";
 
 import MyProfile from "./Components/Dashboard/MyProfile";
+import PurchaseManagement from "./Components/Dashboard/PurchaseManagement";
 import SellingFish from "./Components/Dashboard/SellingFish";
 import TaskDistubation from "./Components/Dashboard/TaskDistubation";
 
@@ -121,10 +127,50 @@ function App() {
                             }
                         />
                         <Route
+                            path="assignd-tasks"
+                            element={
+                                <RequireAuth>
+                                    <AssignedTasks />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="update-task-status"
+                            element={
+                                <RequireAuth>
+                                    <UpdateTaskStatus />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="completed-task-list"
+                            element={
+                                <RequireAuth>
+                                    <CompletedTaskList />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="incompleted-task-list"
+                            element={
+                                <RequireAuth>
+                                    <IncompletedTaskList />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="task-forwarding"
+                            element={
+                                <RequireAuth>
+                                    <TaskForwarding />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
                             path="purchase-management"
                             element={
                                 <RequireAuth>
-                                    <SellingFish />
+                                    <PurchaseManagement />
                                 </RequireAuth>
                             }
                         />

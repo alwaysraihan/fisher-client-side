@@ -12,11 +12,7 @@ import "swiper/css/scrollbar";
 import { useQuery } from "react-query";
 
 const Review = () => {
-    const {
-        data: rivews,
-        isLoading,
-        refetch,
-    } = useQuery("rivew", () =>
+    const { data: rivews, isLoading } = useQuery("rivew", () =>
         fetch("http://localhost:5000/rivews", {
             method: "GET",
             headers: {
@@ -84,11 +80,7 @@ const Review = () => {
                                             <div className="flex my-4 justify-center items-center"></div>
 
                                             <div className="flex justify-center px-6 pt-2 pb-6 md:py-6">
-                                                <div className="text-center">
-                                                    <h2 className="text-sm md:text-base text-center font-bold text-gray-700 leading-tight">
-                                                        {rivew?.name}
-                                                    </h2>
-                                                </div>
+                                                <div className="text-center"></div>
 
                                                 <div className="text-center">
                                                     <h2 className="text-sm md:text-base font-bold text-gray-700 leading-tight">
@@ -96,11 +88,9 @@ const Review = () => {
                                                         Rivew Gives{" "}
                                                         {rivew?.rate} Star
                                                     </h2>
-                                                    <small className="text-gray-500 text-xs md:text-sm text-center">
-                                                        {rivew?.ceo
-                                                            ? rivew.ceo
-                                                            : "Product Manager, Fake Corp."}
-                                                    </small>
+                                                    <h2 className="text-sm md:text-base text-center font-bold text-gray-700 leading-tight">
+                                                        {rivew?.name}
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { format } from "date-fns";
 
 const AssignNewTaskModal = ({ url, setModalData, modalData, setreload }) => {
     const navigate = useNavigate();
-
+    const [date, setDate] = useState(new Date());
+    const formattedDate = date && format(date, "PP");
     const handleSignOut = () => {
         localStorage.removeItem("accessToken");
     };
@@ -24,6 +26,7 @@ const AssignNewTaskModal = ({ url, setModalData, modalData, setreload }) => {
             dadeline: data.dadeline,
             employeeName: modalData.employeeName,
             employeeID: modalData.employeeID,
+            date: formattedDate,
         };
 
         axios
@@ -41,12 +44,15 @@ const AssignNewTaskModal = ({ url, setModalData, modalData, setreload }) => {
                     toast.success("Task Successfully Assigned.", {
                         toastId: "taskAssign",
                     });
-                    setModalData(null);
-                    return setreload(true);
-                } else {
+                    return setModalData(null);
+                }
+
+                if (!data.success) {
                     toast.error("Failed to add you assinedTask!", {
-                        toastId: "Try Again. Something Went Wrong!",
+                        toastId: "faild",
                     });
+                    return setModalData(null);
+                } else {
                     return setModalData(null);
                 }
             });
@@ -54,28 +60,6 @@ const AssignNewTaskModal = ({ url, setModalData, modalData, setreload }) => {
         reset();
     };
 
-    const handleDeletOrder = async (id) => {
-        fetch(url, {
-            method: "POST",
-        })
-            .then((res) => {
-                if (res.status === 403 || res.status === 401) {
-                    handleSignOut();
-                    navigate("/login");
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (data.deletedCount > 0) {
-                    toast.success("Task Successfully Assigned.");
-                    setModalData(null);
-                    return setreload(true);
-                } else {
-                    toast.error("Try Again. Something Went Wrong!");
-                    setModalData(null);
-                }
-            });
-    };
     return (
         <>
             <input
@@ -161,7 +145,6 @@ const AssignNewTaskModal = ({ url, setModalData, modalData, setreload }) => {
                             </button>
                             <button
                                 type="submit"
-                                onClick={() => handleDeletOrder(modalData._id)}
                                 className="btn btn-accent text-white"
                             >
                                 Assign

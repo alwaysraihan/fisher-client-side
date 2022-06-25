@@ -1,56 +1,28 @@
-import React, { useState } from "react";
 import { format } from "date-fns";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
-import LoadingData from "../../Loading/LoadingData";
 import { NavLink } from "react-router-dom";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
-const AttendanceReportsBanner = () => {
-    const [date, setDate] = useState(new Date());
+import LoadingData from "../../Loading/LoadingData";
+import TaskDetailsModal from "../../TaskDetailsModal";
+
+const GetTask = ({ date }) => {
+    const [modalData, setModalData] = useState(null);
     const formattedDate = date && format(date, "PP");
-    const url = `http://localhost:5000/attendance/${formattedDate}`;
+    const url = `http://localhost:5000/all-tasks/${formattedDate}`;
     const { isLoading, error, data } = useQuery(
         ["available", formattedDate],
         () => fetch(url).then((res) => res.json())
     );
-
     const errorText = data?.error;
-
+    console.log(data);
     return (
-        <div className="bg-gray-100">
-            <div>
-                <h1 className="text-center pt-8 mb-10 text-xl md:text-2xl font-semibold">
-                    Select A Attendence Date
-                </h1>
-                <div className="hero">
-                    <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">
-                        <img
-                            src="https://api.lorem.space/image/movie?w=260&h=400"
-                            className="max-w-sm rounded-lg shadow-2xl"
-                            alt="/"
-                        />
-                        <div>
-                            <DayPicker
-                                mode="single"
-                                selected={date}
-                                onSelect={setDate}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h1 className="text-xl text-center font-semibold">
-                {formattedDate} Attendance List
-            </h1>
-            {isLoading && <p>Loading.....</p>}
-            {error ? <p>Something Went Wrong Please try again</p> : ""}
+        <div className="mt-10">
+            {isLoading && <LoadingData />}
             {errorText && (
-                <p className="text-center text-2xl">
-                    Your Selected Data Have No Attendance
+                <p className="text-center text-xl font-semibold text-gray-800">
+                    {errorText}
                 </p>
             )}
-
             {data?.length > 0 && (
                 <div className="w-full min-h-screen px-1  mt-5 lg:pt-8">
                     <div className="lg:px-12 hidden md:block mx-auto sm:px-6 ">
@@ -94,14 +66,14 @@ const AttendanceReportsBanner = () => {
                                                 </th>
 
                                                 <th className="px-6 py-3 text-center font-medium">
-                                                    Attendance
+                                                    Task
                                                 </th>
                                             </tr>
                                         </thead>
 
                                         <tbody className="bg-white">
-                                            {data.map((employee) => (
-                                                <tr key={employee._id}>
+                                            {data.map((task) => (
+                                                <tr key={task._id}>
                                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                         <input
                                                             className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
@@ -113,7 +85,7 @@ const AttendanceReportsBanner = () => {
                                                             <div className="flex flex-col items-center  justify-center">
                                                                 <div>
                                                                     {
-                                                                        employee.employeeName
+                                                                        task.employeeName
                                                                     }
                                                                 </div>
                                                             </div>
@@ -124,7 +96,7 @@ const AttendanceReportsBanner = () => {
                                                             <div>
                                                                 <p className="text-left">
                                                                     {
-                                                                        employee.employeeID
+                                                                        task.employeeID
                                                                     }
                                                                 </p>
                                                             </div>
@@ -137,9 +109,17 @@ const AttendanceReportsBanner = () => {
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                         <div className="flex justify-center items-center">
-                                                            <span className="btn  btn-disabled btn-success text-white rounded uppercase font-poppins font-medium">
-                                                                Present
-                                                            </span>
+                                                            <label
+                                                                htmlFor="task-modal"
+                                                                onClick={() =>
+                                                                    setModalData(
+                                                                        task
+                                                                    )
+                                                                }
+                                                                className="btn btn-success text-white rounded uppercase font-poppins font-medium"
+                                                            >
+                                                                Details
+                                                            </label>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -228,31 +208,16 @@ const AttendanceReportsBanner = () => {
                             </div>
                         </div>
                     </div>
-                    {data.length === 0 ? (
-                        <div className=" w-full my-10 z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
-                            <div
-                                className="spinner-border animate-spin inline-block text-teal-600 mb-10 w-14 h-14 border-6 rounded-full"
-                                role="status"
-                            ></div>
-                            <div className=" mt-10">
-                                <LoadingData />;
-                            </div>
-                        </div>
-                    ) : (
-                        ""
-                    )}
-                    {/* {modalData && (
-                <DeleteModal
-                    url={`http://localhost:5000/employee/${modalData._id}`}
-                    setModalData={setModalData}
-                    modalData={modalData}
-                    setreload={setreload}
-                />
-            )} */}
                 </div>
+            )}
+            {modalData && (
+                <TaskDetailsModal
+                    modalData={modalData}
+                    setModalData={setModalData}
+                />
             )}
         </div>
     );
 };
 
-export default AttendanceReportsBanner;
+export default GetTask;
