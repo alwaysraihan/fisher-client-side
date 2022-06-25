@@ -35,10 +35,10 @@ const Review = () => {
                     <div className=" w-[100%] relative hidden  py-2 md:py-24 bg-indigo-700 md:w-1/2 lg:flex flex-col item-center justify-center">
                         <div className="absolute top-0 left-0 z-10 grid-indigo w-16 h-16 md:w-40 md:h-40 md:ml-20 md:mt-24"></div>
 
-                        <div className="relative  text-2xl md:text-5xl py-2 px-6 md:py-6 md:px-1 md:w-64 md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
-                            <span className="md:block">What Our</span>
-                            <span className="md-block">Customers</span>
-                            <span className="block">Are Saying!</span>
+                        <div className="relative  text-2xl md:text-3xl lg:text-4xl py-2 px-6 md:py-6 md:px-1  md:mx-auto text-indigo-100 font-semibold leading-tight tracking-tight mb-0 z-20">
+                            <p className="md:block leading-10">What People</p>
+                            <p className=" leading-10 my-3">Saying</p>
+                            <p className="block leading-10">About US!</p>
                         </div>
                     </div>
                     <div className="w-[100%] px-5 lg:px-0 lg:w-[50%]">

@@ -14,7 +14,7 @@ const Home = () => {
             <div className="bg-slate-100">
                 <FeaturedProducts />
                 {/* <Employe /> */}
-                <BusinessSummary />
+                {/* <BusinessSummary /> */}
                 {/* <Blog /> */}
                 <Review />
             </div>

@@ -75,8 +75,10 @@ const Footer = () => {
                         <div className="md:flex md:-mx-4 md:items-center">
                             <div className="md:flex-1 md:px-4 text-center md:text-left">
                                 <p className="text-white">
-                                    &copy; 2022
-                                    <strong> ELECTRO MENUFECTURER</strong>
+                                    &copy; {new Date().getFullYear()}{" "}
+                                    <strong className="uppercase">
+                                        Fisheries Management
+                                    </strong>
                                 </p>
                             </div>
                             <div className="md:flex-1 md:px-4 text-center md:text-right">

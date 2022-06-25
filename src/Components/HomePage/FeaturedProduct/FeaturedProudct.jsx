@@ -20,7 +20,7 @@ const FeaturedProducts = () => {
     }, []);
     return (
         <>
-            <div className="pb-20">
+            <div className="pt-5 pb-20">
                 <h1 className="text-center text-gray-600 text-2xl md:text-5xl font-semibold py-10 md:pt-20 ">
                     Featured Feed
                 </h1>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AttendanceList from "./ManageAttendance/AttendanceList";
 import DatePicker from "./ManageAttendance/DatePicker";
 
 const MangeAteendance = () => {
@@ -6,6 +7,7 @@ const MangeAteendance = () => {
     return (
         <>
             <DatePicker date={date} setDate={setDate} />
+            <AttendanceList date={date} setDate={setDate} />
         </>
     );
 };
