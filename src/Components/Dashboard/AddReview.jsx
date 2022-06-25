@@ -98,7 +98,7 @@ const AddReview = () => {
                                                 {...register("rate", {
                                                     required: true,
                                                 })}
-                                                class="select  w-full max-w-xs"
+                                                className="select  w-full max-w-xs"
                                             >
                                                 <option>5</option>
                                                 <option>4</option>

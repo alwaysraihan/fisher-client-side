@@ -8,7 +8,6 @@ import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = ({ user, setUser, setreload }) => {
     const [admin] = useAdmin(user);
-    console.log(admin);
 
     const handleSignOut = () => {
         localStorage.removeItem("employee");
@@ -141,13 +140,13 @@ const Dashboard = ({ user, setUser, setreload }) => {
                                 </Link>
                             </li>
                         )}
-                        {/* {admin && (
+                        {admin && (
                             <li>
-                                <Link to="/dashboard/manageProducts">
+                                <Link to="/dashboard/attendanceReports">
                                     Attendance Reports
                                 </Link>
                             </li>
-                        )} */}
+                        )}
                         {admin && (
                             <li>
                                 <Link to="/dashboard/addReview">

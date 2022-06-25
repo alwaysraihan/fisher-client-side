@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import AddProduct from "./Components/Dashboard/AddProduct";
 import AddReview from "./Components/Dashboard/AddReview";
 import MakeAdmin from "./Components/Dashboard/MakeAdmin";
+import AttendanceReports from "./Components/Dashboard/AttendanceReports/AttendanceReports";
 import MangeAteendance from "./Components/Dashboard/MangeAteendance";
 import MangeProduct from "./Components/Dashboard/MangeProduct";
 import ManggeOrders from "./Components/Dashboard/ManggeOrders";
@@ -122,10 +123,10 @@ function App() {
                             }
                         />
                         <Route
-                            path="makeAdmin"
+                            path="attendanceReports"
                             element={
                                 <RequireAuth>
-                                    <MakeAdmin />
+                                    <AttendanceReports />
                                 </RequireAuth>
                             }
                         />

@@ -44,11 +44,11 @@ const EditMyProfile = ({ refetch, setEdit }) => {
 
     return (
         <>
-            <div class="p-5">
-                <div class="mx-4 p-4">
-                    <div class="flex items-center">
-                        <div class="flex items-center text-teal-600 relative">
-                            <div class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600">
+            <div className="p-5">
+                <div className="mx-4 p-4">
+                    <div className="flex items-center">
+                        <div className="flex items-center text-teal-600 relative">
+                            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-teal-600">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="100%"
@@ -59,18 +59,18 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                     stroke-width="2"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                    class="feather feather-bookmark "
+                                    className="feather feather-bookmark "
                                 >
                                     <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                                 </svg>
                             </div>
-                            <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">
+                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">
                                 Personal
                             </div>
                         </div>
-                        <div class="flex-auto border-t-2 transition duration-500 ease-in-out border-teal-600"></div>
-                        <div class="flex items-center text-white relative">
-                            <div class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 bg-teal-600 border-teal-600">
+                        <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-teal-600"></div>
+                        <div className="flex items-center text-white relative">
+                            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 bg-teal-600 border-teal-600">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="100%"
@@ -81,7 +81,7 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                     stroke-width="2"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                    class="feather feather-user-plus "
+                                    className="feather feather-user-plus "
                                 >
                                     <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="8.5" cy="7" r="4"></circle>
@@ -94,14 +94,14 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                     ></line>
                                 </svg>
                             </div>
-                            <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">
+                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">
                                 Account
                             </div>
                         </div>
 
-                        <div class="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
-                        <div class="flex items-center text-gray-500 relative">
-                            <div class="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
+                        <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300"></div>
+                        <div className="flex items-center text-gray-500 relative">
+                            <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2 border-gray-300">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="100%"
@@ -112,7 +112,7 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                     stroke-width="2"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                    class="feather feather-database "
+                                    className="feather feather-database "
                                 >
                                     <ellipse
                                         cx="12"
@@ -124,26 +124,26 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                                 </svg>
                             </div>
-                            <div class="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">
+                            <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">
                                 Confirm
                             </div>
                         </div>
                     </div>
                 </div>
                 <form onSubmit={handleSubmit(onFormSubmit)} autoComplete="off">
-                    <div class="mt-8 p-4">
+                    <div className="mt-8 p-4">
                         <div>
-                            <div class="flex flex-col md:flex-row">
-                                <div class="w-full mx-2 flex-1 svelte-1l8159u">
-                                    <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
+                            <div className="flex flex-col md:flex-row">
+                                <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                                    <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
                                         {" "}
                                         Eductaion
                                     </div>
-                                    <div class="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                                         <input
                                             type="text"
                                             placeholder="Yor Education Info"
-                                            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                                            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                             name="education"
                                             {...register("employeeId", {
                                                 required: true,
@@ -156,16 +156,16 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                         </span>
                                     )}
                                 </div>
-                                <div class="w-full mx-2 flex-1 svelte-1l8159u">
-                                    <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
+                                <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                                    <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
                                         {" "}
                                         Your Address
                                     </div>
-                                    <div class="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                                         <input
                                             placeholder="Enter Your Address"
                                             type="text"
-                                            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                                            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                             name="address"
                                             {...register("address", {
                                                 required: true,
@@ -179,17 +179,17 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                     )}
                                 </div>
                             </div>
-                            <div class="flex flex-col md:flex-row">
-                                <div class="w-full mx-2 flex-1 svelte-1l8159u">
-                                    <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
+                            <div className="flex flex-col md:flex-row">
+                                <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                                    <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
                                         {" "}
                                         Phone
                                     </div>
-                                    <div class="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                                         <input
                                             type="tel"
                                             placeholder="Your Phone Nubmer"
-                                            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                                            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                             name="phone"
                                             {...register("phone", {
                                                 minLength: 11,
@@ -203,16 +203,16 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                         </span>
                                     )}
                                 </div>
-                                <div class="w-full mx-2 flex-1 svelte-1l8159u">
-                                    <div class="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
+                                <div className="w-full mx-2 flex-1 svelte-1l8159u">
+                                    <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
                                         {" "}
                                         LinkedIn Profile
                                     </div>
-                                    <div class="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
+                                    <div className="bg-white my-2 p-1 flex border border-gray-200 rounded svelte-1l8159u">
                                         <input
                                             type="url"
                                             placeholder="Your Linkedin  Address "
-                                            class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                                            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                             name="linkedin"
                                             {...register("linkedin", {
                                                 required: true,
@@ -227,24 +227,24 @@ const EditMyProfile = ({ refetch, setEdit }) => {
                                 </div>
                             </div>
                         </div>
-                        <div class="flex p-2 mt-4">
+                        <div className="flex p-2 mt-4">
                             <button
                                 type="button"
-                                class=" hidden text-base hover:scale-110 focus:outline-none md:flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200  bg-gray-100 text-gray-700 border duration-200 ease-in-out  border-gray-600 transition"
+                                className=" hidden text-base hover:scale-110 focus:outline-none md:flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-gray-200  bg-gray-100 text-gray-700 border duration-200 ease-in-out  border-gray-600 transition"
                             >
                                 Previous
                             </button>
-                            <div class="flex-auto flex flex-row-reverse">
+                            <div className="flex-auto flex flex-row-reverse">
                                 <button
                                     type="submit"
-                                    class="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600  bg-teal-600  text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
+                                    className="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer hover:bg-teal-600  bg-teal-600  text-teal-100 border duration-200 ease-in-out border-teal-600 transition"
                                 >
                                     Confirm
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setEdit(null)}
-                                    class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer     hover:bg-teal-200   bg-teal-100   text-teal-700    border duration-200 ease-in-out  border-teal-600 transition"
+                                    className="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer     hover:bg-teal-200   bg-teal-100   text-teal-700    border duration-200 ease-in-out  border-teal-600 transition"
                                 >
                                     Skip
                                 </button>

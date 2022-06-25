@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -42,6 +41,15 @@ const MangeEmployee = () => {
         <div className="w-full min-h-screen px-1 bg-gray-100 my-5 md:mb-10 lg:pt-8">
             <div className="lg:px-12 hidden md:block mx-auto sm:px-6 ">
                 <div className="flex flex-col">
+                    <div className="flex justify-end   items-center py-5">
+                        <NavLink
+                            to="/dashboard/addEmployee"
+                            className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
+                        >
+                            Add New Employee
+                        </NavLink>
+                    </div>
+
                     <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                         <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                             <table className="min-w-full table-auto">
