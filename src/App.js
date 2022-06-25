@@ -5,9 +5,12 @@ import { ToastContainer } from "react-toastify";
 import AddReview from "./Components/Dashboard/AddReview";
 
 import AttendanceReports from "./Components/Dashboard/AttendanceReports/AttendanceReports";
+import EmployeeTask from "./Components/Dashboard/EmployeeTask";
 import MangeAteendance from "./Components/Dashboard/MangeAteendance";
 
 import MyProfile from "./Components/Dashboard/MyProfile";
+import SellingFish from "./Components/Dashboard/SellingFish";
+import TaskDistubation from "./Components/Dashboard/TaskDistubation";
 
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 
@@ -76,30 +79,7 @@ function App() {
                                 </RequireAuth>
                             }
                         />
-                        <Route
-                            path="myOrders"
-                            element={
-                                <RequireAuth>
-                                    <MyProfile />
-                                </RequireAuth>
-                            }
-                        />
-                        <Route
-                            path="addReview"
-                            element={
-                                <RequireAuth>
-                                    <AddReview />
-                                </RequireAuth>
-                            }
-                        />
-                        <Route
-                            path="payment/:orderid"
-                            element={
-                                <RequireAuth>
-                                    <MyProfile />
-                                </RequireAuth>
-                            }
-                        />
+
                         <Route
                             path="manageAttendences"
                             element={
@@ -129,6 +109,46 @@ function App() {
                             element={
                                 <RequireAuth>
                                     <MangeEmployee />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="taskDistrubition"
+                            element={
+                                <RequireAuth>
+                                    <TaskDistubation />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="purchase-management"
+                            element={
+                                <RequireAuth>
+                                    <SellingFish />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="sellingFish"
+                            element={
+                                <RequireAuth>
+                                    <SellingFish />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="addReview"
+                            element={
+                                <RequireAuth>
+                                    <AddReview />
+                                </RequireAuth>
+                            }
+                        />
+                        <Route
+                            path="employeeTask"
+                            element={
+                                <RequireAuth>
+                                    <EmployeeTask />
                                 </RequireAuth>
                             }
                         />

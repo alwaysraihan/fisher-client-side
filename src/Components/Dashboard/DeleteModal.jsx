@@ -34,7 +34,7 @@ const DeleteModal = ({ url, setModalData, modalData, setreload }) => {
     };
     return (
         <>
-            <input type="checkbox" id="order-delete" className="modal-toggle" />
+            <input type="checkbox" id="delete-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
                     <h1 className="mt-5 text-sm md:text-xl font-bold">

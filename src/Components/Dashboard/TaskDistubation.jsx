@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
-import DeleteModal from "../../../Components/Dashboard/DeleteModal";
-import LoadingData from "../../../Components/Loading/LoadingData";
+import LoadingData from "../Loading/LoadingData";
+import AssignNewTaskModal from "./AssignNewTaskModal";
 
-const MangeEmployee = () => {
+const TaskDistubation = () => {
     const [employeData, setEmployeData] = useState([]);
     const [reload, setreload] = useState(false);
     const [modalData, setModalData] = useState(null);
@@ -59,7 +59,7 @@ const MangeEmployee = () => {
                                             className="px-6 py-5 text-left"
                                             colSpan="100%"
                                         >
-                                            <p>Manage All Employee</p>
+                                            <p>Mange Task Distrubution</p>
                                         </th>
                                     </tr>
                                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
@@ -77,7 +77,7 @@ const MangeEmployee = () => {
                                         </th>
 
                                         <th className="px-6 py-3 text-center font-medium">
-                                            Delete Employee
+                                            New Task
                                         </th>
                                     </tr>
                                 </thead>
@@ -127,11 +127,11 @@ const MangeEmployee = () => {
                                                                 employee
                                                             )
                                                         }
-                                                        htmlFor="delete-modal"
+                                                        htmlFor="task-assing-modal"
                                                         // className="btn btn-xs btn-warning"
                                                         className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
                                                     >
-                                                        Delete
+                                                        Assign
                                                     </label>
                                                 </div>
                                             </td>
@@ -238,8 +238,9 @@ const MangeEmployee = () => {
             ) : (
                 ""
             )}
+
             {modalData && (
-                <DeleteModal
+                <AssignNewTaskModal
                     url={`http://localhost:5000/employee/${modalData._id}`}
                     setModalData={setModalData}
                     modalData={modalData}
@@ -250,4 +251,4 @@ const MangeEmployee = () => {
     );
 };
 
-export default MangeEmployee;
+export default TaskDistubation;
