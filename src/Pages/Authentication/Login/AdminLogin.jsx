@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-    useSendPasswordResetEmail,
-    useSignInWithEmailAndPassword,
-    useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
 
 import { toast } from "react-toastify";
-
-import auth from "../../../Firebase-Setup/firebase.init";
-import useToken from "../../../hooks/useToken";
-import LoadingData from "../../../Components/Loading/LoadingData";
-import { reload } from "firebase/auth";
 
 const AdminLogin = ({ setreload }) => {
     const navigate = useNavigate();

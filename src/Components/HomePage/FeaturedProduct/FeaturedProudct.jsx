@@ -1,30 +1,17 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./FeaturedProduct.css";
+import React, { useState } from "react";
+
+import sellingFishData from "../../../Data/sellingFish";
+import FishDeatialsModal from "../../FishDeatilsModal";
 
 const FeaturedProducts = () => {
-    const [inventoryItemes, setEnventoryItems] = useState([]);
-    useEffect(() => {
-        const loadData = async () => {
-            try {
-                const { data } = await axios.get(
-                    `https://perfume-inventory-server.herokuapp.com/inventory-items`
-                );
-                setEnventoryItems(data);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-        loadData();
-    }, []);
+    const [modalData, setModalData] = useState(null);
     return (
         <>
             <div className="pt-5 pb-20">
                 <h1 className="text-center text-gray-600 text-2xl md:text-5xl font-semibold py-10 md:pt-20 ">
-                    Featured Feed
+                    Selling Fish
                 </h1>
-                {inventoryItemes.length === 0 ? (
+                {sellingFishData.length === 0 ? (
                     <div className=" w-full my-10 z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
                         <div
                             className="spinner-border animate-spin inline-block text-teal-600 mb-10 w-14 h-14 border-6 rounded-full"
@@ -38,13 +25,13 @@ const FeaturedProducts = () => {
                     ""
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-10 justify-center   px-[2%] md:px-[3%] lg:px-[4%] xl:px-[10%]">
-                    {inventoryItemes.map((item) => (
+                    {sellingFishData.map((item) => (
                         <div key={item._id} className="w-full p-2 ">
                             <div className="bg-white shadow-lg hover:shadow-xl rounded-lg relative">
                                 <div className="bg-white flex justify-center h-64 rounded-t-lg p-4 bg-no-repeat bg-center bg-cover">
                                     <img
                                         className="h-full"
-                                        src="https://images.othoba.com/images/thumbs/0284635_aalo-pangush-finisher-floating-fish-feed-20-kg.jpeg"
+                                        src={item.img}
                                         alt="feed"
                                     />
                                 </div>
@@ -53,10 +40,6 @@ const FeaturedProducts = () => {
                                         <h1 className="font-medium text-xl font-poppins">
                                             {item.name}
                                         </h1>
-                                        <p className="text-gray-500 font-nunito">
-                                            {item.description.slice(0, 40) +
-                                                "..."}
-                                        </p>
                                     </div>
 
                                     <div className="p-2 text-right">
@@ -71,23 +54,19 @@ const FeaturedProducts = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex px-4 justify-between items-center">
-                                    <h1 className="text-gray-400 text-sm">
-                                        {item.suplierName}
-                                    </h1>
-                                    <h1>
-                                        <span className="font-bold">
-                                            Availability:{" "}
-                                        </span>{" "}
-                                        <span className="text-gray-500">
-                                            <span>{item.quantity}</span> in
-                                            stock
-                                        </span>
-                                    </h1>
+                                <div className="pl-4">
+                                    <p className="text-gray-500 mt-3 mb-2 font-nunito">
+                                        {item.description.slice(0, 150) + "..."}
+                                    </p>
                                 </div>
+
                                 <div className="flex justify-center items-center px-2 pb-2">
                                     <div className="w-1/2 p-2">
-                                        <button className="block w-full bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
+                                        <label
+                                            htmlFor="fishdeatils-modal"
+                                            onClick={() => setModalData(item)}
+                                            className="block w-full text-center bg-teal-500 cursor-pointer hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
+                                        >
                                             <svg
                                                 viewBox="0 0 24 24"
                                                 className="inline w-4 h-4"
@@ -98,25 +77,19 @@ const FeaturedProducts = () => {
                                                 />
                                             </svg>{" "}
                                             Details
-                                        </button>
+                                        </label>
                                     </div>
-                                    <div className="w-1/2 p-2">
-                                        <Link
-                                            to={`dashboard/inventory/${item._id}`}
-                                            className="block text-center cursor-pointerZ bg-white hover:bg-gray-100 text-teal-500 border-2 border-teal-500 px-3 py-2 rounded uppercase font-poppins font-medium"
-                                        >
-                                            Update
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="ribbon ribbon-top-right">
-                                    <span>Top Rated</span>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className="mt-3 md:mt-8  flex justify-center"></div>
+                {modalData && (
+                    <FishDeatialsModal
+                        modalData={modalData}
+                        setModalData={setModalData}
+                    />
+                )}
             </div>
         </>
     );

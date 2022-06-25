@@ -1,20 +1,10 @@
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { Link } from "react-router-dom";
-import LoadingData from "../../../Components/Loading/LoadingData";
-import auth from "../../../Firebase-Setup/firebase.init";
 
 const PageNotFound = () => {
-    const [user, loading] = useAuthState(auth);
     return (
         <>
-            {loading ? (
-                <div>
-                    <LoadingData />
-                </div>
-            ) : (
-                ""
-            )}
             <div>
                 <div
                     x-ref="loading"

@@ -133,13 +133,13 @@ const Dashboard = ({ user, setUser, setreload }) => {
                                 </Link>
                             </li>
                         )}
-                        {admin && (
+                        {/* {admin && (
                             <li>
                                 <Link to="/dashboard/manageProducts">
                                     Selling Fish Reports
                                 </Link>
                             </li>
-                        )}
+                        )} */}
                         {admin && (
                             <li>
                                 <Link to="/dashboard/attendanceReports">

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import AddProduct from "./Components/Dashboard/AddProduct";
+
 import AddReview from "./Components/Dashboard/AddReview";
-import MakeAdmin from "./Components/Dashboard/MakeAdmin";
+
 import AttendanceReports from "./Components/Dashboard/AttendanceReports/AttendanceReports";
 import MangeAteendance from "./Components/Dashboard/MangeAteendance";
-import MangeProduct from "./Components/Dashboard/MangeProduct";
-import ManggeOrders from "./Components/Dashboard/ManggeOrders";
-import MyOrders from "./Components/Dashboard/MyOrders";
+
 import MyProfile from "./Components/Dashboard/MyProfile";
 
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
@@ -22,10 +19,8 @@ import AddEmployee from "./Pages/Dashboard/AddEmployee/AddEmployee";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MangeEmployee from "./Pages/Dashboard/MangeEmployee/MangeEmployee";
 
-import Payment from "./Pages/Dashboard/Payment";
 import FAQ from "./Pages/FAQ/FAQ";
 import Home from "./Pages/HomePage/Home/Home";
-import Purchase from "./Pages/MyCart/Purchase";
 
 import Footer from "./Pages/SharedPages/Footer/Footer";
 import Header from "./Pages/SharedPages/Header/Header";
@@ -60,7 +55,6 @@ function App() {
                     />
                     <Route path="/faqs" element={<FAQ />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/purchase/:id" element={<Purchase />} />
                     <Route path="/addemployee" element={<AddEmployee />} />
                     <Route
                         path="/dashboard"
@@ -86,7 +80,7 @@ function App() {
                             path="myOrders"
                             element={
                                 <RequireAuth>
-                                    <MyOrders />
+                                    <MyProfile />
                                 </RequireAuth>
                             }
                         />
@@ -102,7 +96,7 @@ function App() {
                             path="payment/:orderid"
                             element={
                                 <RequireAuth>
-                                    <Payment />
+                                    <MyProfile />
                                 </RequireAuth>
                             }
                         />

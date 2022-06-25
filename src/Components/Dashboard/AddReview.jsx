@@ -2,10 +2,8 @@ import axios from "axios";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import auth from "../../Firebase-Setup/firebase.init";
 
-const AddReview = () => {
-    const [user] = useAuthState(auth);
+const AddReview = ({ user }) => {
     const {
         register,
         handleSubmit,
@@ -16,7 +14,6 @@ const AddReview = () => {
 
     const onFormSubmit = async (data) => {
         const rivew = {
-            name: user.displayName,
             email: user.email,
             rivew: data.rivew,
             rate: data.rate,

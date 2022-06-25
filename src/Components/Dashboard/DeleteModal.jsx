@@ -1,12 +1,9 @@
-import { signOut } from "firebase/auth";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import auth from "../../Firebase-Setup/firebase.init";
 
 const DeleteModal = ({ url, setModalData, modalData, setreload }) => {
     const handleSignOut = () => {
-        signOut(auth);
         localStorage.removeItem("accessToken");
     };
     const navigate = useNavigate();
