@@ -28,7 +28,7 @@ const Dashboard = ({ user, setUser, setreload }) => {
                     <Outlet />
                 </div>
 
-                <div className="drawer-side">
+                <div className="drawer-side  max-h-screen sticky overflow-y-scroll">
                     <label
                         htmlFor="dashboard-sidebar"
                         className="drawer-overlay"
@@ -159,6 +159,9 @@ const Dashboard = ({ user, setUser, setreload }) => {
                             className="mt-10 cursor-pointer text-center text-warning"
                         >
                             Logout
+                        </li>
+                        <li className="mt-auto mb-5">
+                            <Link to="/">GoBack</Link>
                         </li>
                     </ul>
                 </div>

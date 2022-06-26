@@ -16,7 +16,7 @@ const SellingFish = () => {
                                                 className="px-6 py-5 text-left"
                                                 colSpan="100%"
                                             >
-                                                <p>Purchase Mangement</p>
+                                                <p>Selling Fish</p>
                                             </th>
                                         </tr>
                                         <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
@@ -27,11 +27,14 @@ const SellingFish = () => {
                                                 Fish Name
                                             </th>
                                             <th className="px-6 py-3  font-medium text-center">
-                                                Price
+                                                Unit Price
+                                            </th>
+                                            <th className="px-6 py-3  font-medium text-center">
+                                                Selling Quantity
                                             </th>
 
                                             <th className="px-6 py-3 text-center font-medium">
-                                                Product ID
+                                                Total Sell
                                             </th>
                                         </tr>
                                     </thead>
@@ -67,7 +70,12 @@ const SellingFish = () => {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                     <div className="flex justify-center items-center">
-                                                        {product.id}
+                                                        {product.quantity}
+                                                    </div>
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
+                                                    <div className="flex justify-center items-center">
+                                                        {product.totalPrice}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -82,15 +90,6 @@ const SellingFish = () => {
                 {/* mobile device  */}
                 <div className="md:hidden w-full  lg:px-8">
                     <div className="flex flex-col">
-                        <div className="flex justify-end   items-center py-5">
-                            <NavLink
-                                to="/dashboard/addEmployee"
-                                className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                            >
-                                Add New Employee
-                            </NavLink>
-                        </div>
-
                         <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                             <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                 <table className="min-w-full table-auto">
@@ -100,16 +99,16 @@ const SellingFish = () => {
                                                 className="px-6 py-5 text-left"
                                                 colSpan="100%"
                                             >
-                                                <p>Assigned Task</p>
+                                                <p>Selling Fish</p>
                                             </th>
                                         </tr>
                                         <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                                             <th className="px-6 py-3 text-center font-medium">
-                                                Employee Info
+                                                Fish Info
                                             </th>
 
                                             <th className="px-6 py-3 text-center font-medium">
-                                                Attendance
+                                                Total Sell
                                             </th>
                                         </tr>
                                     </thead>
@@ -122,15 +121,20 @@ const SellingFish = () => {
                                                         <div className="flex flex-col items-center justify-center">
                                                             <div>
                                                                 <h1>
-                                                                    Name:{" "}
                                                                     {
-                                                                        product.productName
+                                                                        product.name
                                                                     }
                                                                 </h1>
                                                                 <h1>
-                                                                    ID:{" "}
+                                                                    Unit Price{" "}
                                                                     {
                                                                         product.price
+                                                                    }
+                                                                </h1>
+                                                                <h1>
+                                                                    Quantity{" "}
+                                                                    {
+                                                                        product.quantity
                                                                     }
                                                                 </h1>
                                                             </div>
@@ -140,9 +144,7 @@ const SellingFish = () => {
 
                                                 <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                     <div className="flex justify-center items-center">
-                                                        <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
-                                                            Present
-                                                        </button>
+                                                        {product.totalPrice}
                                                     </div>
                                                 </td>
                                             </tr>

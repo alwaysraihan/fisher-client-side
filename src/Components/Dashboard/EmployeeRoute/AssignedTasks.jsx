@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { NavLink } from "react-router-dom";
+
 import LoadingData from "../../Loading/LoadingData";
 import TaskDetailsModal from "../../TaskDetailsModal";
 
 const AssignedTasks = () => {
-    const user = JSON.parse(localStorage.getItem("employee"));
     const [modalData, setModalData] = useState(null);
+    const user = JSON.parse(localStorage.getItem("employee"));
+
     const url = `http://localhost:5000/assigned-tasks/${user.employeeID}`;
     const { isLoading, error, data } = useQuery("assignedTask", () =>
         fetch(url).then((res) => res.json())
@@ -58,8 +59,8 @@ const AssignedTasks = () => {
                                             </thead>
 
                                             <tbody className="bg-white">
-                                                {data.map((task) => (
-                                                    <tr key={task._id}>
+                                                {data.map((myTask) => (
+                                                    <tr key={myTask._id}>
                                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                             <input
                                                                 className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
@@ -71,7 +72,7 @@ const AssignedTasks = () => {
                                                                 <div className="flex flex-col items-center  justify-center">
                                                                     <div>
                                                                         {
-                                                                            task.employeeName
+                                                                            myTask.employeeName
                                                                         }
                                                                     </div>
                                                                 </div>
@@ -81,7 +82,7 @@ const AssignedTasks = () => {
                                                             <div className="flex flex-col items-center justify-center">
                                                                 <div>
                                                                     <p className="text-left">
-                                                                        {task.completed ? (
+                                                                        {myTask.completed ? (
                                                                             <button className="btn btn-disabled text-white btn-xs bg-warning border-warning">
                                                                                 Completed
                                                                             </button>
@@ -102,13 +103,13 @@ const AssignedTasks = () => {
                                                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                             <div className="flex justify-center items-center">
                                                                 <label
-                                                                    htmlFor="task-modal"
                                                                     onClick={() =>
                                                                         setModalData(
-                                                                            task
+                                                                            myTask
                                                                         )
                                                                     }
-                                                                    className="btn btn-success text-white rounded uppercase font-poppins font-medium"
+                                                                    htmlFor="task-modal"
+                                                                    className="btn btn-success cursor-pointer text-white rounded uppercase font-poppins font-medium"
                                                                 >
                                                                     Details
                                                                 </label>
@@ -126,15 +127,6 @@ const AssignedTasks = () => {
                         {/* mobile device  */}
                         <div className="md:hidden w-full  lg:px-8">
                             <div className="flex flex-col">
-                                <div className="flex justify-end   items-center py-5">
-                                    <NavLink
-                                        to="/dashboard/addEmployee"
-                                        className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                                    >
-                                        Add New Employee
-                                    </NavLink>
-                                </div>
-
                                 <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                                     <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                         <table className="min-w-full table-auto">
@@ -149,18 +141,18 @@ const AssignedTasks = () => {
                                                 </tr>
                                                 <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                                                     <th className="px-6 py-3 text-center font-medium">
-                                                        Employee Info
+                                                        Task Info
                                                     </th>
 
                                                     <th className="px-6 py-3 text-center font-medium">
-                                                        Attendance
+                                                        Task Details
                                                     </th>
                                                 </tr>
                                             </thead>
 
                                             <tbody className="bg-white">
-                                                {data.map((employee) => (
-                                                    <tr key={employee._id}>
+                                                {data.map((task) => (
+                                                    <tr key={task._id}>
                                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                             <div className="text-sm leading-5 text-gray-900">
                                                                 <div className="flex flex-col items-center justify-center">
@@ -168,15 +160,21 @@ const AssignedTasks = () => {
                                                                         <h1>
                                                                             Name:{" "}
                                                                             {
-                                                                                employee.employeeName
+                                                                                task.employeeName
                                                                             }
                                                                         </h1>
-                                                                        <h1>
-                                                                            ID:{" "}
-                                                                            {
-                                                                                employee.employeeID
-                                                                            }
-                                                                        </h1>
+
+                                                                        <p className="text-left mt-2">
+                                                                            {task.completed ? (
+                                                                                <button className="btn btn-disabled text-white btn-xs bg-warning border-warning">
+                                                                                    Completed
+                                                                                </button>
+                                                                            ) : (
+                                                                                <button className="btn btn-disabled text-white btn-xs bg-teal-500 border-teal-500">
+                                                                                    Incompleted
+                                                                                </button>
+                                                                            )}
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -184,9 +182,17 @@ const AssignedTasks = () => {
 
                                                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                             <div className="flex justify-center items-center">
-                                                                <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
-                                                                    Present
-                                                                </button>
+                                                                <label
+                                                                    onClick={() =>
+                                                                        setModalData(
+                                                                            task
+                                                                        )
+                                                                    }
+                                                                    htmlFor="task-modal"
+                                                                    className="btn btn-success cursor-pointer text-white rounded uppercase font-poppins font-medium"
+                                                                >
+                                                                    Details
+                                                                </label>
                                                             </div>
                                                         </td>
                                                     </tr>

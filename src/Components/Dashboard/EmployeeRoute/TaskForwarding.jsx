@@ -133,15 +133,6 @@ const TaskForwarding = () => {
                         {/* mobile device  */}
                         <div className="md:hidden w-full  lg:px-8">
                             <div className="flex flex-col">
-                                <div className="flex justify-end   items-center py-5">
-                                    <NavLink
-                                        to="/dashboard/addEmployee"
-                                        className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                                    >
-                                        Add New Employee
-                                    </NavLink>
-                                </div>
-
                                 <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                                     <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                         <table className="min-w-full table-auto">
@@ -151,23 +142,30 @@ const TaskForwarding = () => {
                                                         className="px-6 py-5 text-left"
                                                         colSpan="100%"
                                                     >
-                                                        <p>Assigned Task</p>
+                                                        <p>Forward Task</p>
                                                     </th>
                                                 </tr>
                                                 <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                                                     <th className="px-6 py-3 text-center font-medium">
-                                                        Employee Info
+                                                        Task
                                                     </th>
 
                                                     <th className="px-6 py-3 text-center font-medium">
-                                                        Attendance
+                                                        Forward
                                                     </th>
                                                 </tr>
                                             </thead>
 
                                             <tbody className="bg-white">
-                                                {data.map((employee) => (
-                                                    <tr key={employee._id}>
+                                                {data.map((ForwardedTask) => (
+                                                    <tr
+                                                        key={ForwardedTask._id}
+                                                        className={`${
+                                                            ForwardedTask.completed
+                                                                ? "hidden"
+                                                                : ""
+                                                        }`}
+                                                    >
                                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                             <div className="text-sm leading-5 text-gray-900">
                                                                 <div className="flex flex-col items-center justify-center">
@@ -175,15 +173,20 @@ const TaskForwarding = () => {
                                                                         <h1>
                                                                             Name:{" "}
                                                                             {
-                                                                                employee.employeeName
+                                                                                ForwardedTask.employeeName
                                                                             }
                                                                         </h1>
-                                                                        <h1>
-                                                                            ID:{" "}
-                                                                            {
-                                                                                employee.employeeID
-                                                                            }
-                                                                        </h1>
+                                                                        <p className="text-left">
+                                                                            {ForwardedTask.completed ? (
+                                                                                <button className="btn btn-disabled text-white btn-xs bg-teal-500 border-teal-500">
+                                                                                    Completed
+                                                                                </button>
+                                                                            ) : (
+                                                                                <button className="btn btn-disabled text-white btn-xs bg-warning border-warning">
+                                                                                    Incompleted
+                                                                                </button>
+                                                                            )}
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -191,9 +194,17 @@ const TaskForwarding = () => {
 
                                                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                             <div className="flex justify-center items-center">
-                                                                <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
-                                                                    Present
-                                                                </button>
+                                                                <label
+                                                                    htmlFor="task-modal"
+                                                                    onClick={() =>
+                                                                        setModalData(
+                                                                            ForwardedTask
+                                                                        )
+                                                                    }
+                                                                    className="btn btn-success text-white rounded uppercase font-poppins font-medium"
+                                                                >
+                                                                    Forward
+                                                                </label>
                                                             </div>
                                                         </td>
                                                     </tr>

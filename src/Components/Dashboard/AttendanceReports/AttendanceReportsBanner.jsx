@@ -17,7 +17,7 @@ const AttendanceReportsBanner = () => {
     const errorText = data?.error;
 
     return (
-        <div className="bg-gray-100">
+        <div className="bg-gray-100 min-h-screen">
             <div>
                 <h1 className="text-center pt-8 lg:mb-10 text-xl md:text-2xl font-semibold">
                     Select A Attendence Date
@@ -26,7 +26,7 @@ const AttendanceReportsBanner = () => {
                     <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">
                         <img
                             src="https://api.lorem.space/image/movie?w=260&h=400"
-                            className="max-w-sm hidden rounded-lg shadow-2xl"
+                            className="max-w-sm hidden lg:block rounded-lg shadow-2xl"
                             alt="/"
                         />
                         <div>
@@ -43,10 +43,14 @@ const AttendanceReportsBanner = () => {
             <h1 className="text-xl text-center font-semibold">
                 {formattedDate} Attendance List
             </h1>
-            {isLoading && <p>Loading.....</p>}
-            {error ? <p>Something Went Wrong Please try again</p> : ""}
+            {isLoading && <p className="mt-5">Loading.....</p>}
+            {error ? (
+                <p className="mt-5">Something Went Wrong Please try again</p>
+            ) : (
+                ""
+            )}
             {errorText && (
-                <p className="text-center text-2xl">
+                <p className="text-center mt-5 text-2xl">
                     Your Selected Data Have No Attendance
                 </p>
             )}
@@ -197,9 +201,9 @@ const AttendanceReportsBanner = () => {
 
                                                     <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                         <div className="flex justify-center items-center">
-                                                            <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
+                                                            <span className="btn  btn-disabled btn-success text-white rounded uppercase font-poppins font-medium">
                                                                 Present
-                                                            </button>
+                                                            </span>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -223,14 +227,6 @@ const AttendanceReportsBanner = () => {
                     ) : (
                         ""
                     )}
-                    {/* {modalData && (
-                <DeleteModal
-                    url={`http://localhost:5000/employee/${modalData._id}`}
-                    setModalData={setModalData}
-                    modalData={modalData}
-                    setreload={setreload}
-                />
-            )} */}
                 </div>
             )}
         </div>

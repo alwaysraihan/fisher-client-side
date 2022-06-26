@@ -44,12 +44,15 @@ const FeaturedProducts = () => {
 
                                     <div className="p-2 text-right">
                                         <div className="text-teal-500 font-semibold text-center text-lg font-poppins">
-                                            ${item.price}
+                                            <span className="text-black mr-1">
+                                                ৳
+                                            </span>
+                                            {item.price}
                                         </div>
 
                                         <div>
                                             <div className=" flex justify-center items-center font-semibold text-gray-500 text-center text-sm font-poppins">
-                                                Price
+                                                Unit Price
                                             </div>
                                         </div>
                                     </div>

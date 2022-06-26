@@ -155,15 +155,6 @@ const UpdateTaskStatus = () => {
                         {/* mobile device  */}
                         <div className="md:hidden w-full  lg:px-8">
                             <div className="flex flex-col">
-                                <div className="flex justify-end   items-center py-5">
-                                    <NavLink
-                                        to="/dashboard/addEmployee"
-                                        className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                                    >
-                                        Add New Employee
-                                    </NavLink>
-                                </div>
-
                                 <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                                     <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                         <table className="min-w-full table-auto">
@@ -173,7 +164,10 @@ const UpdateTaskStatus = () => {
                                                         className="px-6 py-5 text-left"
                                                         colSpan="100%"
                                                     >
-                                                        <p>Assigned Task</p>
+                                                        <p>
+                                                            {" "}
+                                                            Update Task Status
+                                                        </p>
                                                     </th>
                                                 </tr>
                                                 <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
@@ -182,14 +176,21 @@ const UpdateTaskStatus = () => {
                                                     </th>
 
                                                     <th className="px-6 py-3 text-center font-medium">
-                                                        Attendance
+                                                        Task Status
                                                     </th>
                                                 </tr>
                                             </thead>
 
                                             <tbody className="bg-white">
-                                                {data.map((employee) => (
-                                                    <tr key={employee._id}>
+                                                {data.map((task) => (
+                                                    <tr
+                                                        key={task._id}
+                                                        className={`${
+                                                            task.completed
+                                                                ? "hidden"
+                                                                : ""
+                                                        }`}
+                                                    >
                                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                             <div className="text-sm leading-5 text-gray-900">
                                                                 <div className="flex flex-col items-center justify-center">
@@ -197,13 +198,13 @@ const UpdateTaskStatus = () => {
                                                                         <h1>
                                                                             Name:{" "}
                                                                             {
-                                                                                employee.employeeName
+                                                                                task.employeeName
                                                                             }
                                                                         </h1>
                                                                         <h1>
                                                                             ID:{" "}
                                                                             {
-                                                                                employee.employeeID
+                                                                                task.employeeID
                                                                             }
                                                                         </h1>
                                                                     </div>
@@ -213,8 +214,15 @@ const UpdateTaskStatus = () => {
 
                                                         <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                             <div className="flex justify-center items-center">
-                                                                <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
-                                                                    Present
+                                                                <button
+                                                                    onClick={() =>
+                                                                        handleUpdate(
+                                                                            task._id
+                                                                        )
+                                                                    }
+                                                                    className="btn btn-success text-white rounded uppercase font-poppins font-medium"
+                                                                >
+                                                                    Update
                                                                 </button>
                                                             </div>
                                                         </td>

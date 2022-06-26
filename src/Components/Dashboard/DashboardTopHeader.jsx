@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link as span, NavLink } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 
 const DashboardTopHeader = () => {
@@ -39,12 +39,9 @@ const DashboardTopHeader = () => {
                                 </svg>
                             </label>
                         </div>
-                        <Link
-                            to="/"
-                            className="font-bold uppercase text-blue-500 text-xl "
-                        >
+                        <span className="font-bold uppercase text-blue-500 text-xl ">
                             {admin ? "Admin Pannel" : "Employee Dashobard"}
-                        </Link>
+                        </span>
                     </div>
                 </div>
             </div>

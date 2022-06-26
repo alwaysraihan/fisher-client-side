@@ -165,7 +165,7 @@ const TaskDistubation = () => {
                                             className="px-6 py-5 text-left"
                                             colSpan="100%"
                                         >
-                                            <p>Manage All Employee</p>
+                                            <p>Mange Task Distrubution</p>
                                         </th>
                                     </tr>
                                     <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
@@ -174,7 +174,7 @@ const TaskDistubation = () => {
                                         </th>
 
                                         <th className="px-6 py-3 text-center font-medium">
-                                            Delete
+                                            New Task
                                         </th>
                                     </tr>
                                 </thead>
@@ -205,16 +205,17 @@ const TaskDistubation = () => {
 
                                             <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                 <div className="flex justify-center items-center">
-                                                    <button
+                                                    <label
                                                         onClick={() =>
-                                                            deleteEmployee(
-                                                                employee._id
+                                                            setModalData(
+                                                                employee
                                                             )
                                                         }
+                                                        htmlFor="task-assing-modal"
                                                         className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
                                                     >
-                                                        Delete
-                                                    </button>
+                                                        Assign
+                                                    </label>
                                                 </div>
                                             </td>
                                         </tr>

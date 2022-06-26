@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import purchaseproduct from "../../Data/purchaseproduct";
 
 const PurchaseManagement = () => {
@@ -88,15 +87,6 @@ const PurchaseManagement = () => {
                 {/* mobile device  */}
                 <div className="md:hidden w-full  lg:px-8">
                     <div className="flex flex-col">
-                        <div className="flex justify-end   items-center py-5">
-                            <NavLink
-                                to="/dashboard/addEmployee"
-                                className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                            >
-                                Add New Employee
-                            </NavLink>
-                        </div>
-
                         <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                             <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                 <table className="min-w-full table-auto">
@@ -106,7 +96,7 @@ const PurchaseManagement = () => {
                                                 className="px-6 py-5 text-left"
                                                 colSpan="100%"
                                             >
-                                                <p>Assigned Task</p>
+                                                <p>Purchase Mangement</p>
                                             </th>
                                         </tr>
                                         <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
@@ -115,7 +105,7 @@ const PurchaseManagement = () => {
                                             </th>
 
                                             <th className="px-6 py-3 text-center font-medium">
-                                                Attendance
+                                                Price
                                             </th>
                                         </tr>
                                     </thead>
@@ -129,15 +119,11 @@ const PurchaseManagement = () => {
                                                             <div>
                                                                 <h1>
                                                                     Name:{" "}
-                                                                    {
-                                                                        product.productName
-                                                                    }
-                                                                </h1>
-                                                                <h1>
-                                                                    ID:{" "}
-                                                                    {
-                                                                        product.price
-                                                                    }
+                                                                    {product.productName.slice(
+                                                                        0,
+                                                                        10
+                                                                    )}
+                                                                    ...
                                                                 </h1>
                                                             </div>
                                                         </div>
@@ -146,9 +132,7 @@ const PurchaseManagement = () => {
 
                                                 <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                     <div className="flex justify-center items-center">
-                                                        <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
-                                                            Present
-                                                        </button>
+                                                        <h1>{product.price}</h1>
                                                     </div>
                                                 </td>
                                             </tr>
