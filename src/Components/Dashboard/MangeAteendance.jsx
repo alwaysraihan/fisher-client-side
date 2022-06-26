@@ -126,13 +126,6 @@ const MangeAteendance = () => {
                                             </td>
                                             <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                 <div className="flex justify-center items-center">
-                                                    {/* {employee.attendances?.map(
-                                                        (data, index) => (
-                                                            <h1 key={index}>
-                                                                {data}
-                                                            </h1>
-                                                        )
-                                                    )} */}
                                                     {employee.attendances?.includes(
                                                         formattedDate
                                                     ) ? (
@@ -223,16 +216,24 @@ const MangeAteendance = () => {
 
                                             <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                 <div className="flex justify-center items-center">
-                                                    <button
-                                                        onClick={() =>
-                                                            handleAttendance(
-                                                                employee
-                                                            )
-                                                        }
-                                                        className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
-                                                    >
-                                                        Present
-                                                    </button>
+                                                    {employee.attendances?.includes(
+                                                        formattedDate
+                                                    ) ? (
+                                                        <span className="btn  btn-disabled btn-success text-white rounded uppercase font-poppins font-medium">
+                                                            Present
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            onClick={() =>
+                                                                handleAttendance(
+                                                                    employee
+                                                                )
+                                                            }
+                                                            className=" bg-teal-500  hover:bg-teal-600 btn text-white border-teal-500 hover:border-teal-600 rounded uppercase font-poppins font-medium"
+                                                        >
+                                                            Present
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </td>
                                         </tr>
@@ -256,14 +257,6 @@ const MangeAteendance = () => {
             ) : (
                 ""
             )}
-            {/* {modalData && (
-                <DeleteModal
-                    url={`http://localhost:5000/employee/${modalData._id}`}
-                    setModalData={setModalData}
-                    modalData={modalData}
-                    setreload={setreload}
-                />
-            )} */}
         </div>
     );
 };

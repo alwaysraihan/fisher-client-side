@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 
-const MyProfile = ({ user }) => {
+const MyProfile = () => {
+    const user = JSON.parse(localStorage.getItem("employee"));
     return (
         <>
             <div className="container mx-auto my-5 p-5">
@@ -19,9 +20,6 @@ const MyProfile = ({ user }) => {
                                     />
                                 </div>
                             </div>
-                            <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                                {user?.employeeName ? user.employeeName : ""}
-                            </h1>
 
                             <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                                 <li className="flex items-center py-3">
@@ -57,9 +55,9 @@ const MyProfile = ({ user }) => {
                                         stroke="currentColor"
                                     >
                                         <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                                         />
                                     </svg>
@@ -73,7 +71,11 @@ const MyProfile = ({ user }) => {
                                             Name
                                         </div>
                                         <div className="px-4 py-2">
-                                            <h1>Raihan</h1>
+                                            <h1>
+                                                {user?.employeeName
+                                                    ? user.employeeName
+                                                    : "*Employee*"}
+                                            </h1>
                                         </div>
                                     </div>
 
@@ -81,50 +83,52 @@ const MyProfile = ({ user }) => {
                                         <div className="px-4 py-2 font-semibold">
                                             Contact No.
                                         </div>
-                                        <h1>01402348575</h1>
+                                        <h1>
+                                            {user?.employeephone
+                                                ? user.employeephone
+                                                : "01*********"}
+                                        </h1>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
                                             Address
                                         </div>
-                                        <h1>Dhaka,Bangladesh</h1>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        {user ? (
-                                            <div className="px-4 py-2 font-semibold">
-                                                <span className="text-blue-500">
-                                                    Linkedin
-                                                </span>
-                                            </div>
-                                        ) : (
-                                            <div
-                                                onClick={() =>
-                                                    toast.warning(
-                                                        "You did not add Linkedin!"
-                                                    )
-                                                }
-                                                className="px-4  cursor-pointer py-2 font-semibold"
-                                            >
-                                                Linkedin
-                                            </div>
-                                        )}
+                                        <h1>
+                                            {user?.employeeAddress
+                                                ? user.employeeAddress
+                                                : "****,Bangldadesh"}
+                                        </h1>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
-                                            Email
+                                            Degignation
                                         </div>
                                         <div className="px-4 py-2">
-                                            <span className="text-blue-800">
-                                                employee@gmail.com
+                                            <span>
+                                                {user?.employeeDegignation
+                                                    ? user.employeeDegignation
+                                                    : "*****"}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-2">
                                         <div className="px-4 py-2 font-semibold">
-                                            Education
+                                            Employee ID
                                         </div>
                                         <div className="px-4 py-2">
-                                            <h1>Education</h1>
+                                            <span>
+                                                {user?.employeeID
+                                                    ? user.employeeID
+                                                    : "******"}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-2">
+                                        <div className="px-4 py-2 font-semibold">
+                                            Password
+                                        </div>
+                                        <div className="px-4 py-2">
+                                            <h1>*****</h1>
                                         </div>
                                     </div>
                                 </div>

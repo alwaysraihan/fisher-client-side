@@ -61,7 +61,7 @@ const Dashboard = ({ user, setUser, setreload }) => {
                         )}
                         {!admin && (
                             <li>
-                                <Link to="/dashboard/completed-task-list">
+                                <Link to="/dashboard/incompleted-task-list">
                                     Incompleted Task List
                                 </Link>
                             </li>

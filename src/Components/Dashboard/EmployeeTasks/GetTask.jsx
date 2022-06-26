@@ -14,7 +14,7 @@ const GetTask = ({ date }) => {
         () => fetch(url).then((res) => res.json())
     );
     const errorText = data?.error;
-    console.log(data);
+
     return (
         <div className="mt-10">
             {isLoading && <LoadingData />}
@@ -46,8 +46,8 @@ const GetTask = ({ date }) => {
                                                     colSpan="100%"
                                                 >
                                                     <p>
-                                                        {formattedDate}{" "}
-                                                        Attendance
+                                                        {formattedDate} Assigned
+                                                        Task List
                                                     </p>
                                                 </th>
                                             </tr>
@@ -153,8 +153,8 @@ const GetTask = ({ date }) => {
                                                     colSpan="100%"
                                                 >
                                                     <p>
-                                                        {formattedDate}{" "}
-                                                        Attendance
+                                                        {formattedDate} Assigned
+                                                        Task List
                                                     </p>
                                                 </th>
                                             </tr>
@@ -164,14 +164,14 @@ const GetTask = ({ date }) => {
                                                 </th>
 
                                                 <th className="px-6 py-3 text-center font-medium">
-                                                    Attendance
+                                                    Task
                                                 </th>
                                             </tr>
                                         </thead>
 
                                         <tbody className="bg-white">
-                                            {data.map((employee) => (
-                                                <tr key={employee._id}>
+                                            {data.map((task) => (
+                                                <tr key={task._id}>
                                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                         <div className="text-sm leading-5 text-gray-900">
                                                             <div className="flex flex-col items-center justify-center">
@@ -179,13 +179,13 @@ const GetTask = ({ date }) => {
                                                                     <h1>
                                                                         Name:{" "}
                                                                         {
-                                                                            employee.employeeName
+                                                                            task.employeeName
                                                                         }
                                                                     </h1>
                                                                     <h1>
                                                                         ID:{" "}
                                                                         {
-                                                                            employee.employeeID
+                                                                            task.employeeID
                                                                         }
                                                                     </h1>
                                                                 </div>
@@ -195,9 +195,17 @@ const GetTask = ({ date }) => {
 
                                                     <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                         <div className="flex justify-center items-center">
-                                                            <button className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium">
-                                                                Present
-                                                            </button>
+                                                            <label
+                                                                htmlFor="task-modal"
+                                                                onClick={() =>
+                                                                    setModalData(
+                                                                        task
+                                                                    )
+                                                                }
+                                                                className="btn btn-success text-white rounded uppercase font-poppins font-medium"
+                                                            >
+                                                                Details
+                                                            </label>
                                                         </div>
                                                     </td>
                                                 </tr>

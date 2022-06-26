@@ -19,14 +19,14 @@ const AttendanceReportsBanner = () => {
     return (
         <div className="bg-gray-100">
             <div>
-                <h1 className="text-center pt-8 mb-10 text-xl md:text-2xl font-semibold">
+                <h1 className="text-center pt-8 lg:mb-10 text-xl md:text-2xl font-semibold">
                     Select A Attendence Date
                 </h1>
                 <div className="hero">
                     <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">
                         <img
                             src="https://api.lorem.space/image/movie?w=260&h=400"
-                            className="max-w-sm rounded-lg shadow-2xl"
+                            className="max-w-sm hidden rounded-lg shadow-2xl"
                             alt="/"
                         />
                         <div>
@@ -55,15 +55,6 @@ const AttendanceReportsBanner = () => {
                 <div className="w-full min-h-screen px-1  mt-5 lg:pt-8">
                     <div className="lg:px-12 hidden md:block mx-auto sm:px-6 ">
                         <div className="flex flex-col">
-                            <div className="flex justify-end   items-center py-5">
-                                <NavLink
-                                    to="/dashboard/addEmployee"
-                                    className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                                >
-                                    Add New Employee
-                                </NavLink>
-                            </div>
-
                             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                                 <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                     <table className="min-w-full table-auto">
@@ -154,15 +145,6 @@ const AttendanceReportsBanner = () => {
                     {/* mobile device  */}
                     <div className="md:hidden w-full  lg:px-8">
                         <div className="flex flex-col">
-                            <div className="flex justify-end   items-center py-5">
-                                <NavLink
-                                    to="/dashboard/addEmployee"
-                                    className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
-                                >
-                                    Add New Employee
-                                </NavLink>
-                            </div>
-
                             <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                                 <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
                                     <table className="min-w-full table-auto">

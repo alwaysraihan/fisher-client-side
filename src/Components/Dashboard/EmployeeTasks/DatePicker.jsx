@@ -11,7 +11,7 @@ const DatePicker = ({ date, setDate }) => {
                 <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">
                     <img
                         src="https://api.lorem.space/image/movie?w=260&h=400"
-                        className="max-w-sm rounded-lg shadow-2xl"
+                        className=" hidden lg:block max-w-sm rounded-lg shadow-2xl"
                         alt="/"
                     />
                     <div>

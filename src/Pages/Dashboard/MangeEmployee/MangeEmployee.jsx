@@ -22,21 +22,7 @@ const MangeEmployee = () => {
         };
         loadData();
     }, [reload]);
-    const deleteEmployee = async (id) => {
-        const sure = window.confirm("Are you sure? You want to delete!");
-        if (sure) {
-            const url = `http://localhost:5000/employee/${id}`;
-            await axios.delete(url).then((response) => {
-                const { data } = response;
-                if (data) {
-                    const remaingProduct = employeData.filter(
-                        (item) => item._id !== id
-                    );
-                    setEmployeData(remaingProduct);
-                }
-            });
-        }
-    };
+
     return (
         <div className="w-full min-h-screen px-1 bg-gray-100 my-5 md:mb-10 lg:pt-8">
             <div className="lg:px-12 hidden md:block mx-auto sm:px-6 ">
@@ -94,7 +80,7 @@ const MangeEmployee = () => {
                                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <div className="text-sm leading-5 text-gray-900">
                                                     <div className="flex flex-col items-center  justify-center">
-                                                        <div className="flex-shrink-0 h-10 w-10"></div>
+                                                        <div className="flex-shrink-0 "></div>
                                                         <div>
                                                             {
                                                                 employee.employeeName
@@ -185,7 +171,7 @@ const MangeEmployee = () => {
                                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <div className="text-sm leading-5 text-gray-900">
                                                     <div className="flex flex-col items-center  justify-center">
-                                                        <div className="flex-shrink-0 h-10 w-10"></div>
+                                                        <div className="flex-shrink-0 "></div>
                                                         <div>
                                                             <h1>
                                                                 {" "}
@@ -193,9 +179,10 @@ const MangeEmployee = () => {
                                                                     employee.employeeName
                                                                 }
                                                             </h1>
-                                                            <h1>
+                                                            <h1 className="mt-2">
+                                                                ID:{" "}
                                                                 {
-                                                                    employee.employeID
+                                                                    employee.employeeID
                                                                 }
                                                             </h1>
                                                         </div>
@@ -205,16 +192,17 @@ const MangeEmployee = () => {
 
                                             <td className="px-6 py-4 whitespace-no-wrap text-center border-b border-gray-200 text-sm leading-5 font-medium">
                                                 <div className="flex justify-center items-center">
-                                                    <button
+                                                    <label
                                                         onClick={() =>
-                                                            deleteEmployee(
-                                                                employee._id
+                                                            setModalData(
+                                                                employee
                                                             )
                                                         }
+                                                        htmlFor="delete-modal"
                                                         className="block  bg-teal-500 hover:bg-teal-600 text-white border-2 border-teal-500 hover:border-teal-600 px-3 py-2 rounded uppercase font-poppins font-medium"
                                                     >
                                                         Delete
-                                                    </button>
+                                                    </label>
                                                 </div>
                                             </td>
                                         </tr>
