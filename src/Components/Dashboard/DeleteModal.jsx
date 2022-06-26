@@ -23,11 +23,15 @@ const DeleteModal = ({ url, setModalData, modalData, setreload }) => {
             })
             .then((data) => {
                 if (data.deletedCount > 0) {
-                    toast.success("successfully Deleted.");
+                    toast.success("successfully Deleted.", {
+                        toastId: "deletesuccess",
+                    });
                     setModalData(null);
                     return setreload(true);
                 } else {
-                    toast.error("Try Again. Something Went Wrong!");
+                    toast.error("Try Again. Something Went Wrong!", {
+                        toastId: "deleteError",
+                    });
                     setModalData(null);
                 }
             });

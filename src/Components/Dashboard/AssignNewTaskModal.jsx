@@ -49,7 +49,7 @@ const AssignNewTaskModal = ({ url, setModalData, modalData, setreload }) => {
 
                 if (!data.success) {
                     toast.error("Failed to add you assinedTask!", {
-                        toastId: "faild",
+                        toastId: "taskassignfaild",
                     });
                     return setModalData(null);
                 } else {

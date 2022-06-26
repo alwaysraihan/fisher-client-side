@@ -1,11 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useQuery } from "react-query";
 import LoadingData from "../../Loading/LoadingData";
-import { NavLink } from "react-router-dom";
+
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
+import {
+    LineChart,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    Line,
+    ResponsiveContainer,
+    Legend,
+    BarChart,
+    Bar,
+} from "recharts";
 const AttendanceReportsBanner = () => {
+    const [data2, setData2] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:5000/employee")
+            .then((res) => res.json())
+            .then((data) => setData2(data));
+    }, []);
     const [date, setDate] = useState(new Date());
     const formattedDate = date && format(date, "PP");
     const url = `http://localhost:5000/attendance/${formattedDate}`;
@@ -15,6 +33,13 @@ const AttendanceReportsBanner = () => {
     );
 
     const errorText = data?.error;
+    const chartData = [
+        {
+            name: "Total Employee",
+            TotalEmployee: data2?.length ? data2.length : 0,
+            Present: data?.length ? data.length : 0,
+        },
+    ];
 
     return (
         <div className="bg-gray-100 min-h-screen">
@@ -24,11 +49,22 @@ const AttendanceReportsBanner = () => {
                 </h1>
                 <div className="hero">
                     <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">
-                        <img
-                            src="https://api.lorem.space/image/movie?w=260&h=400"
-                            className="max-w-sm hidden lg:block rounded-lg shadow-2xl"
-                            alt="/"
-                        />
+                        <div className="w-full lg:w-[50%] h-full flex justify-center items-center -z-30 ">
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={chartData}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar
+                                        dataKey="TotalEmployee"
+                                        fill="#8884d8"
+                                    />
+                                    <Bar dataKey="Present" fill="#82ca9d" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
                         <div>
                             <DayPicker
                                 mode="single"

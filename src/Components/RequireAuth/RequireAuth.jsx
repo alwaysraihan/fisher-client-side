@@ -9,7 +9,9 @@ const RequireAuth = ({ children }) => {
     const user = JSON.parse(localStorage.getItem("employee"));
 
     if (!user || !user.employeeID) {
-        toast.error("You are not loged in");
+        toast.error("You are not loged in", {
+            toastId: "unatuhorized",
+        });
         return (
             <Navigate to="/employee-login" state={{ from: location }} replace />
         );

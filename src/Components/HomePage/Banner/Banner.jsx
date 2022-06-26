@@ -28,8 +28,6 @@ const Banner = () => {
                 pagination={{
                     dynamicBullets: true,
                 }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}
                 className="mySwiper"
             >
                 <SwiperSlide>

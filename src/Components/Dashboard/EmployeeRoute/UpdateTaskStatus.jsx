@@ -26,7 +26,7 @@ const UpdateTaskStatus = () => {
             }
         });
     };
-    console.log(data);
+
     return (
         <div>
             <div className="mt-10">
