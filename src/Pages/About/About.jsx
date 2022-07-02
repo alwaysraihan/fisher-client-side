@@ -10,7 +10,7 @@ const About = () => {
                 </h1>
                 <div className="container md:pt-14 pb-20 md:pb-28 px-6 mx-auto">
                     <section className=" text-gray-800">
-                        <div className="block rounded-lg shadow-lg bg-white">
+                        <div className="block rounded-lg shadow-lg bg-gray-200">
                             <div className="flex flex-wrap items-center">
                                 <div className="grow-0 shrink-0 basis-auto block w-full lg:flex lg:w-6/12 xl:w-4/12">
                                     <div className="map-container-2 h-[500px] w-full">

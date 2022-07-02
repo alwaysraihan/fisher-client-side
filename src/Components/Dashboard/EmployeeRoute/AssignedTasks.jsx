@@ -8,7 +8,7 @@ const AssignedTasks = () => {
     const [modalData, setModalData] = useState(null);
     const user = JSON.parse(localStorage.getItem("employee"));
 
-    const url = `http://localhost:5000/assigned-tasks/${user.employeeID}`;
+    const url = `https://fisheries-employee.herokuapp.com/assigned-tasks/${user.employeeID}`;
     const { isLoading, error, data } = useQuery("assignedTask", () =>
         fetch(url).then((res) => res.json())
     );

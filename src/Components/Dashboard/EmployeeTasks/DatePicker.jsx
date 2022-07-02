@@ -10,8 +10,8 @@ const DatePicker = ({ date, setDate }) => {
             <div className="hero">
                 <div className="hero-content  w-full gap-16 flex-col justify-between items-center lg:flex-row-reverse">
                     <img
-                        src="https://api.lorem.space/image/movie?w=260&h=400"
-                        className=" hidden lg:block max-w-sm rounded-lg shadow-2xl"
+                        src="https://www.jscimedcentral.com/Aquaculture/images/aquaculture-1-1001-g001.gif"
+                        className=" hidden lg:block  rounded-lg shadow-2xl"
                         alt="/"
                     />
                     <div>

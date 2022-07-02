@@ -18,18 +18,20 @@ const AddReview = () => {
             rate: data.rate,
         };
 
-        axios.post("http://localhost:5000/rivews", rivew).then((res) => {
-            const data = res.data;
-            if (data.success) {
-                toast.success("New Rivew Added", {
-                    toastId: "addRivew",
-                });
-            } else {
-                toast.error("Failed to add this rivew!", {
-                    toastId: "faildToRivew",
-                });
-            }
-        });
+        axios
+            .post("https://fisheries-employee.herokuapp.com/rivews", rivew)
+            .then((res) => {
+                const data = res.data;
+                if (data.success) {
+                    toast.success("New Rivew Added", {
+                        toastId: "addRivew",
+                    });
+                } else {
+                    toast.error("Failed to add this rivew!", {
+                        toastId: "faildToRivew",
+                    });
+                }
+            });
 
         reset();
     };

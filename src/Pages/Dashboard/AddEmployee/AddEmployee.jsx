@@ -27,7 +27,7 @@ const AddEmployee = () => {
         };
 
         axios
-            .put(`http://localhost:5000/employee`, emplyee, {
+            .put(`https://fisheries-employee.herokuapp.com/employee`, emplyee, {
                 headers: {
                     "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem(

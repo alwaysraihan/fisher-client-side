@@ -7,15 +7,18 @@ const useAdmin = (user) => {
     useEffect(() => {
         const employeeID = user?.employeeID;
         if (employeeID) {
-            fetch(`http://localhost:5000/admin/${employeeID}`, {
-                method: "GET",
-                headers: {
-                    "content-type": "application/json",
-                    authorization: `Bearer ${localStorage.getItem(
-                        "accessToken"
-                    )}`,
-                },
-            })
+            fetch(
+                `https://fisheries-employee.herokuapp.com/admin/${employeeID}`,
+                {
+                    method: "GET",
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem(
+                            "accessToken"
+                        )}`,
+                    },
+                }
+            )
                 .then((res) => res.json())
                 .then((data) => {
                     setAdmin(data.admin);

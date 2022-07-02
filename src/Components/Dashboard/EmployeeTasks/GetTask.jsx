@@ -8,7 +8,7 @@ import TaskDetailsModal from "../../TaskDetailsModal";
 const GetTask = ({ date }) => {
     const [modalData, setModalData] = useState(null);
     const formattedDate = date && format(date, "PP");
-    const url = `http://localhost:5000/all-tasks/${formattedDate}`;
+    const url = `https://fisheries-employee.herokuapp.com/all-tasks/${formattedDate}`;
     const { isLoading, error, data } = useQuery(
         ["available", formattedDate],
         () => fetch(url).then((res) => res.json())

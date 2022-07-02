@@ -6,12 +6,10 @@ import LoadingData from "../../Loading/LoadingData";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import {
-    LineChart,
     CartesianGrid,
     XAxis,
     YAxis,
     Tooltip,
-    Line,
     ResponsiveContainer,
     Legend,
     BarChart,
@@ -20,13 +18,13 @@ import {
 const AttendanceReportsBanner = () => {
     const [data2, setData2] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/employee")
+        fetch("https://fisheries-employee.herokuapp.com/employee")
             .then((res) => res.json())
             .then((data) => setData2(data));
     }, []);
     const [date, setDate] = useState(new Date());
     const formattedDate = date && format(date, "PP");
-    const url = `http://localhost:5000/attendance/${formattedDate}`;
+    const url = `https://fisheries-employee.herokuapp.com/attendance/${formattedDate}`;
     const { isLoading, error, data } = useQuery(
         ["available", formattedDate],
         () => fetch(url).then((res) => res.json())

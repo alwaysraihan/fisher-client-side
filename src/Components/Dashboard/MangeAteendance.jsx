@@ -18,7 +18,7 @@ const MangeAteendance = () => {
         const loadData = async () => {
             try {
                 const { data } = await axios.get(
-                    "http://localhost:5000/employee"
+                    "https://fisheries-employee.herokuapp.com/employee"
                 );
                 setEmployeData(data);
             } catch (err) {
@@ -35,7 +35,7 @@ const MangeAteendance = () => {
             employeeDegignation: employee.employeeDegignation,
             date: formattedDate,
         };
-        const url = `http://localhost:5000/attendance/${employee._id}`;
+        const url = `https://fisheries-employee.herokuapp.com/attendance/${employee._id}`;
         await axios.put(url, attendance).then((response) => {
             const { data } = response;
             if (data) {

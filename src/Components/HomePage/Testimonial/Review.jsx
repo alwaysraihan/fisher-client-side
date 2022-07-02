@@ -13,11 +13,8 @@ import { useQuery } from "react-query";
 
 const Review = () => {
     const { data: rivews, isLoading } = useQuery("rivew", () =>
-        fetch("http://localhost:5000/rivews", {
+        fetch("https://fisheries-employee.herokuapp.com/rivews", {
             method: "GET",
-            headers: {
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
         }).then((res) => res.json())
     );
     if (isLoading) {

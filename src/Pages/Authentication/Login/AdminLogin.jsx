@@ -28,7 +28,7 @@ const AdminLogin = ({ setreload }) => {
         const { employeeID, password } = userLoginData;
 
         if (employeeID && password) {
-            fetch(`http://localhost:5000/admin-login`, {
+            fetch(`https://fisheries-employee.herokuapp.com/admin-login`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -42,7 +42,7 @@ const AdminLogin = ({ setreload }) => {
                         localStorage.setItem("employee", JSON.stringify(data));
                         setreload(true);
                         navigate("/");
-                        return toast.success("লগিন সফল হয়েছে।", {
+                        return toast.success("Login Success.", {
                             toastId: "loginsuccess",
                         });
                     }

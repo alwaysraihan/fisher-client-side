@@ -29,7 +29,7 @@ const EmployeeLogin = ({ setreload }) => {
         const { employeeID, password } = userLoginData;
 
         if (employeeID && password) {
-            fetch(`http://localhost:5000/employee-login`, {
+            fetch(`https://fisheries-employee.herokuapp.com/employee-login`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -42,7 +42,7 @@ const EmployeeLogin = ({ setreload }) => {
                         localStorage.setItem("employee", JSON.stringify(data));
                         setreload(true);
                         navigate("/");
-                        return toast.success("লগিন সফল হয়েছে।", {
+                        return toast.success("Login Success.", {
                             toastId: "employeeLoginSuccess",
                         });
                     }

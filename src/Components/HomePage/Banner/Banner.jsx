@@ -35,7 +35,7 @@ const Banner = () => {
                         <div className="w-full">
                             <img
                                 className="w-full max-h-[70vh]"
-                                src="https://source.unsplash.com/1280x720/?nature"
+                                src="https://wallpaperaccess.com/full/3129237.jpg"
                                 alt=" Slider"
                             />
                         </div>
@@ -46,7 +46,7 @@ const Banner = () => {
                         <div className="w-full">
                             <img
                                 className="w-full max-h-[70vh]"
-                                src="https://source.unsplash.com/1280x720/?nature"
+                                src="https://wallpaperaccess.com/full/119995.jpg"
                                 alt=" Slider"
                             />
                         </div>
@@ -57,7 +57,7 @@ const Banner = () => {
                         <div className="w-full">
                             <img
                                 className="w-full max-h-[70vh]"
-                                src="https://source.unsplash.com/1280x720/?nature"
+                                src="https://source.unsplash.com/1280x720/?fish"
                                 alt=" Slider"
                             />
                         </div>

@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-
 const MyProfile = () => {
     const user = JSON.parse(localStorage.getItem("employee"));
     return (

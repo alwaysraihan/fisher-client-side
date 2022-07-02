@@ -6,25 +6,27 @@ import { toast } from "react-toastify";
 import axios from "axios";
 const UpdateTaskStatus = () => {
     const user = JSON.parse(localStorage.getItem("employee"));
-    const url = `http://localhost:5000/assigned-tasks/${user.employeeID}`;
+    const url = `https://fisheries-employee.herokuapp.com/assigned-tasks/${user.employeeID}`;
     const { isLoading, error, data, refetch } = useQuery("updatetask", () =>
         fetch(url).then((res) => res.json())
     );
     const errorText = data?.error;
     const handleUpdate = (id) => {
-        axios.patch(`http://localhost:5000/task-update/${id}`).then((res) => {
-            const data = res.data;
-            if (data.success) {
-                toast.success("Task Status Updated", {
-                    toastId: "taskUpdated",
-                });
-                return refetch();
-            } else {
-                toast.error("Failed to Update!", {
-                    toastId: "faildTaskUpdate",
-                });
-            }
-        });
+        axios
+            .patch(`https://fisheries-employee.herokuapp.com/task-update/${id}`)
+            .then((res) => {
+                const data = res.data;
+                if (data.success) {
+                    toast.success("Task Status Updated", {
+                        toastId: "taskUpdated",
+                    });
+                    return refetch();
+                } else {
+                    toast.error("Failed to Update!", {
+                        toastId: "faildTaskUpdate",
+                    });
+                }
+            });
     };
 
     return (

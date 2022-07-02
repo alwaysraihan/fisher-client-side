@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { toast } from "react-toastify";
 import DeleteModal from "../../../Components/Dashboard/DeleteModal";
 import LoadingData from "../../../Components/Loading/LoadingData";
 
@@ -13,7 +12,7 @@ const MangeEmployee = () => {
         const loadData = async () => {
             try {
                 const { data } = await axios.get(
-                    "http://localhost:5000/employee"
+                    "https://fisheries-employee.herokuapp.com/employee"
                 );
                 setEmployeData(data);
             } catch (err) {
@@ -228,7 +227,7 @@ const MangeEmployee = () => {
             )}
             {modalData && (
                 <DeleteModal
-                    url={`http://localhost:5000/employee/${modalData._id}`}
+                    url={`https://fisheries-employee.herokuapp.com/employee/${modalData._id}`}
                     setModalData={setModalData}
                     modalData={modalData}
                     setreload={setreload}
